@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /*.div{*/
+        /*width: 100px;*/
+        /*height:100px;*/
+        /*background: blue;*/
+        /*border-radius: 50%;*/
+        /*text-align: center;*/
+        /*line-height: 100px;*/
+    /*}*/
+    /*.arr{*/
+        /*background: red;*/
+    /*}*/
+
+
+
+
+</style>
+<body>
+<!--<div class="div">134165</div>-->
+<!--&lt;!&ndash;<div style="width: 200px; height: 200px">123</div>&ndash;&gt;-->
+<!--<div><img src="63287417_p0.jpg" alt=""></div>-->
+<!--<input type="text" name="arr" value="请输入">-->
+
+<!--<div class="div">1</div>-->
+<!--<div class="div">2</div>-->
+<!--<div class="div">3</div>-->
+<!--<div class="div">4</div>-->
+<script>
+	window.onload=function () {
+		let div=document.querySelectorAll("div");
+		div.forEach(function (value) {
+            value.onclick=function(){
+            	this.classList.toggle("arr");
+            }
+		})
+	}
+
+
+
+
+
+
+
+
+	//	let input=document.querySelector("input[name]")
+	//	input.onfocus=function () {
+	//		if (this.value=="请输入"){
+	//			this.value="";
+	//        }
+	//	}
+	//	input.onblur=function () {
+	//        if(this.value==""){
+	//        	this.value="请输入";
+	//        }
+	//	}
+	//	input.onchange=function () {
+	//        console.log("跳汾河");
+	//	}
+	//    let img=document.querySelector("img");
+	//    console.dir(img);
+	//    console.log(img.getAttribute("img"));
+	////    img.setAttribute("id");
+	////    console.log();
+	//
+	//    let div=document.querySelector("div");
+	////    div.style.width="600px";
+	////	div.style.height="600px";
+	////	div.style.background="red";
+	//    div.style.cssText="width:600px; height:600px;border-radius:50%;background:#ff3300;"
+	//
+
+
+
+	//	let div=document.querySelector("div");
+	//	console.log(getComputedStyle(div,null).background);
+	let img=document.querySelector("img");
+	//img.onclick=function () {
+	//    console.log("吔屎啦你");
+	//}
+	//img.ondblclick=function () {
+	//	console.log("你爱我吗");
+	//}
+
+
+	//img.onmousedown=function () {
+	//    console.log("P站");
+	//}
+	//img.onmouseup=function () {
+	//    console.log("D站");
+	//}
+
+
+	//img.onmousemove=function () {
+	//	console.log("滑稽");
+	//}
+	//img.onmouseover=function () {
+	//    console.log("辣稽");
+	//}
+
+
+
+	//    document.onkeydown=function () {
+	//        console.log("哇哈哈");
+	//	}
+	//document.onkeypress=function () {
+	//	console.log("youyouyou");
+	//}
+	//document.onkeyup=function () {
+	//	console.log("史珍香");
+	//}
+
+
+
+
+
+</script>
+<div class="div">5</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+</style>
+<div></div>
+</body>
+<script>
+    var a=1;
+    var b=2;
+   class Drag{
+    	constructor(dom){
+    		this.dom=dom;
+        }
+        click(){
+    		this.dom.onclick=function () {
+                alert(1);
+			}
+        }
+        mouse(){
+        	this.dom.onmouseover=function () {
+				console.log("鼠标移动");
+			}
+        }
+   }
+   let dom=document.querySelector("div");
+   let obj=new Drag(dom);
+   obj.click();
+   obj.mouse();
+</script>
+</html>

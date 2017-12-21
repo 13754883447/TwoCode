@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    .div{
+        width: 200px;
+        height:200px;
+        background: #43ffe9;
+        position: fixed;
+        left:0;
+        top: 0;
+    }
+</style>
+<body>
+<div class="div">
+
+</div>
+</body>
+<script>
+    let div=document.querySelector(".div");
+    let documentwidth=document.documentElement.clientwidth;
+	let documentheight=document.documentElement.clientHeight;
+	let divwidth=div.offsetWidth;
+	let divheight=div.offsetHeight;
+//    拉动
+    div.onmousedown=function (e) {
+//		距相对于事件源本身左上角的位置
+		let ol=e.offsetX;
+        let ot=e.offsetY;
+        //用document 不会中途掉下来
+        document.onmousemove=function (e) {
+//        	距离视口窗口左上角的距离
+            let cl=e.clientX;
+            let ct=e.clientY;
+
+            //移动到哪里
+            let dl=cl-ol;
+            let dt=ct-ot;
+            if (dl>=documentwidth-divwidth){
+                dl=documentwidth-divwidth;
+            }
+			if (dt>=documentheight-divheight){
+				dt=documentheight-divheight;
+			}
+			if(dl<=0){
+				dl=0;
+            }
+            if(dt<=0){
+				dt=0;
+            }
+             div.style.left=dl+"px";
+             div.style.top=dt+"px";
+		}
+	}
+div.onmouseup=function () {
+    document.onmousemove=null;
+}
+
+
+
+
+//    div.onclick=click;
+//    function click() {
+//        alert("Hello,Word");
+//	}
+//    function aa() {
+//        alert(1);
+//	};
+//	function bb() {
+//		alert(2);
+//	};
+//	div.addEventListener("click",aa,false);
+//	div.addEventListener("click",bb,false);
+//	div.removeEventListener("click",aa,false);
+    //当鼠标点击也就是click事件时,JS会让他干什么。
+
+
+//    div.addEventListener("click",function () {
+//        alert(1);
+//	});
+//    div.removeEventListener("click",function () {
+//        alert(1);
+//	});
+//    因为function是匿名函数。所以 上面两个没有关系,故无法去除.
+
+//    事件对象
+//   div.onclick=function (e) {
+//       console.log(e);
+//   }
+
+    //距离视口窗口的位置.
+//    div.onclick=function (e) {
+//    	x=e.clientX;
+//    	y=e.clientY;
+//        div.innerHTML=`x=${x},y=${y}`;
+//	}
+</script>
+</html>

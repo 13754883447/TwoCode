@@ -1,0 +1,291 @@
+.tou{
+	width: 100%;
+}
+.neikuan{
+	width: 960px;
+	margin: 0 auto;
+	margin-top: 40px;
+	display: flex;
+	justify-content: space-between;
+}
+.nkzuo{
+	width: 50%;
+}
+.logo{
+	width: 143px;
+	height: 36px;
+	background-image: url('../img/QQ图片20170525180228.png');
+	margin-top: 15px;
+	margin-left: 10px;
+}
+.nkyou{
+	width: 50%;
+	text-align: right;
+	margin-right: 10px;
+}
+#nkyou1{
+	font-size: 14px;
+}
+.nkyou2{
+	margin-top: 5px;
+	float: right;
+	height: 33px;
+}
+.tubiao{
+	float: left;
+	margin-right: 3px;
+	width: 31px;
+	height: 31px;
+	background: #D4D4D4;
+	background-image: url('../img/QQ图片20170525180418.png');
+	background-position: -1px -30px;
+}
+.tubiao:hover{
+	background-color: #66ffff;
+}
+.tubiao1{
+	float: left;
+	margin-right: 3px;
+	width: 31px;
+	height: 31px;
+	background: #D4D4D4;
+	background-image: url('../img/QQ图片20170525180418.png');
+	background-position: -30px -31px;
+}
+.tubiao1:hover{
+	background-color: blue;
+}
+.tubiao2{
+	float: left;
+	margin-right: 3px;
+	width: 31px;
+	height: 31px;
+	background: #D4D4D4;
+	background-image: url('../img/QQ图片20170525180418.png');
+	background-position: -60px -30px;
+}
+.tubiao2:hover{
+	background-color: red;
+}
+.tubiao3{
+	float: left;
+	margin-right: 3px;
+	width: 31px;
+	height: 31px;
+	background: #D4D4D4;
+	background-image: url('../img/QQ图片20170525180418.png');
+	background-position: -93px -30px;
+}
+.tubiao3:hover{
+	background-color: #66ff66;
+}
+.tubiao4{
+	float: left;
+	margin-right: 3px;
+	width: 31px;
+	height: 31px;
+	background: #D4D4D4;
+	background-image: url('../img/QQ图片20170525180418.png');
+	background-position: -125px -30px;
+}
+.tubiao4:hover{
+	background-color: #ff99ff;
+}
+.tubiao5{
+	float: left;
+	margin-right: 3px;
+	width: 31px;
+	height: 31px;
+	background: #D4D4D4;
+	background-image: url('../img/QQ图片20170525180418.png');
+	background-position: -155px -30px;
+}
+.tubiao5:hover{
+	background-color: #ff6600;
+}
+.daohang{
+	width: 960px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 0px 3px;
+}
+.daohang1{
+	width: 76px;
+	height: 100%;
+	float: left;
+	background-color: green;
+	color: white;
+	text-align: center;
+	line-height: 38px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+}
+.daohang2{
+	width: 107px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 38px;
+	font-size: 14px;
+}
+.noborder{
+	border: 1px solid #ccc;
+	border-left: 0px;
+}
+.noborder1{
+	border: 1px solid #ccc;
+	border-left: 0px;
+	border-right: 0px;
+}
+.noborder2{
+	border-right: 0px;
+}
+.daohang3{
+	width: 73px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 38px;
+	font-size: 14px;
+}
+.daohang4{
+	width: 98px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 38px;
+	font-size: 14px;
+}
+.daohang5{
+	width: 73px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 38px;
+	font-size: 14px;
+}
+.daohang6{
+	width: 119px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 38px;
+	font-size: 14px;
+}
+.daohang7{
+	width: 96px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 38px;
+	font-size: 14px;
+}
+.daohang8{
+	width: 108px;
+	height: 100%;
+	float: left;
+	padding-left: 20px;
+	text-align: left;
+	line-height: 38px;
+	font-size: 14px;
+}
+.daohang9{
+	width: 203px;
+	height: 100%;
+	float: right;
+	text-align: left;
+	font-size: 14px;
+}
+.sousuokuang{
+	width: 125px;
+	margin-top: 5px;
+	margin-left: 30px;
+	float: left;
+	height: 30px;
+}
+#daohang10{
+	float: right;
+	width: 38px;
+	height: 38px;
+	font-size: 18px;
+	text-align: center;
+}
+.nkzuo-small{
+	width: 380px;
+	padding-top: 50px;
+	margin: 0 auto;
+}
+.logo-small{
+	width: 143px;
+	height: 36px;
+	background-image: url('../img/QQ图片20170525180228.png');
+	margin: 0 auto;
+}
+.nkyou1-small{
+	text-align: center;
+}
+.nkyou2{
+
+	margin-top: 20px;
+	margin: 0 auto;
+	height: 33px;
+}
+.sousuokuang-small{
+	width: 100%;
+	height: 30px;
+	margin-top: 20px;
+}
+#daohang10-small{
+	width: 38px;
+	height: 38px;
+	font-size: 18px;
+	text-align: center;
+	margin: 0 auto;
+}
+.input-small{
+	width: 38px;
+	height: 38px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.banner{
+	margin-top: 20px;
+	width: 100%;
+	background: #F6F6F6;
+}
+.back{
+	width: 618px;
+	min-height: 400px;
+	background-image: url('../img/QQ图片20170525180323.png');
+	background-position: 100% 100%;
+	background-size: cover;
+	margin: 0 auto;
+}
+.back-center{
+		width: 100%;
+		height: 398px;
+		background-image: url('../img/QQ图片20170525180356.png');
+		background-position: 100% 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+}
+.back-small{
+		width: 100%;
+		height: 217px;
+		background-image: url('../img/QQ图片20170525180402.png');
+		background-position: 100% 100%;
+		background-size: cover;
+		margin: 0 auto;
+		background-repeat: no-repeat;
+}
+.nkyou2-small{
+	margin-top: 5px;
+	margin: 0 auto;
+	height: 33px;
+}
+.nkyou2-small ul li{
+	margin: 0 auto;
+	display: inline-block;
+}

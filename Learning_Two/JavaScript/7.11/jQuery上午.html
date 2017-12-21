@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+</head>
+<style>
+    section{
+        width:1000px;
+        height:1000px;
+        background: yellow;
+        position: relative;
+        margin: 10px;
+    }
+    div{
+        width:50px;
+        height:50px;
+        position: absolute;
+        margin: 100px;
+        background: red;
+        /*border: 20px dashed #33fabf;*/
+        /*padding: 20px;*/
+    }
+    #alt{
+        position: absolute;
+        margin: 100px;
+    }
+    button{
+        position: fixed;
+        left: 20px;
+        top: 100px;
+    }
+</style>
+<body>
+<!--<section>-->
+    <!--&lt;!&ndash;<div class="alt">1</div>&ndash;&gt;-->
+
+    <!--<div>-->
+        <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;2&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--<span>2</span>-->
+        <!--<span>-->
+        <!--23156-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--<div>3</div>-->
+    <!--<p>这是p</p>-->
+    <!--<div id="alt">这是一样</div>-->
+<!--</section>-->
+
+<section>
+    <div></div>
+    <input type="text">
+</section>
+
+<button>顶部</button>
+</body>
+</html>
+
+
+
+
+<script>
+	//    $("div").eq(2).css("background","red");
+	//    $("div").first().css("background","blue");
+	//    $("div").last().css("color","white");
+	//    $("div").filter(".alt").css("background","#ff3300");
+
+	//        console.log($("div").hasClass("alt"));;
+
+	//        console.log($("div").is(".alt"));
+
+	//            console.log($("div").map(function () {
+	//                    return $(this)
+	//            }));
+
+	//        console.log($("div").has("p"));
+
+	//        console.log($("div").not($("#alt")[0]));
+
+	//        console.log($("div").slice(0,1));
+
+	//    console.log($("div").children());
+	//    console.log($("p").closest("div"));
+
+	//    console.log($("div").find($("p")));
+
+	//    console.log($("div").next());
+	//    console.log($("div").nextAll());
+	//console.log($("div").nextUntil("div"));
+	//console.log($("div").offsetParent());
+
+	//console.log($("p").parent());
+	//console.log($("span").parents("div"));
+	//    $("div").append("<p>这是插入</p>");
+	//$("<p>这是插如</p>").appendTo($("div"));
+	//$("div").prepend("<p>插前面</p>")
+	//$("div").after("<p>往后插入</p>");
+	//$("div").before("<p>往前插入</p>");
+	//$("<p>one</p>").insertAfter("#alt");
+	//$("<p>two</p>").insertBefore("#alt");
+	//$("p").wrap("<div class='alt'></div>");
+	//    $("p").unwrap();
+	//    $("section").wrapAll("<div></div>");
+	//$("p").wrapInner("<b></b>");
+	//$("p").replaceWith("<b>Paragraph. </b>");
+	//$("<b>Paragraph. </b>").replaceAll("div");
+	//$("section").empty();
+	//$("div").remove();
+	//$("p").detach();
+	//let p=$("p");
+	//$("p").click(function () {
+	//	alert("red");
+	//})
+	//    $("p").clone(true).prependTo($("body"));
+
+
+	//$("div").attr("class","one");
+	//    $("div").removeAttr("class");
+
+	//$("input").prop({
+	//    disabled:true
+	//});
+	//$("input").prop("disabled",false);
+	//$("input").removeProp("disabled");
+	//$("input").addClass("one");
+	//$("input").removeClass();
+	//$("input").toggleClass("one");
+	//$("div").html("麻辣锅香加皮");
+	//$("div").text("滑稽");
+	//$("input").val("Hello,Word!");
+	//    $("input").focus(function () {
+	//        return $(this).val("Hello,Word!");
+	//	});
+	//$("input").blur(function () {
+	//	return $(this).val("");
+	//})
+	//
+//	$("div").css({
+//		width:100,
+//		height:100,
+//		background:"red",
+//	});
+	//    console.log($("section").offset());//margin会计入
+	//    console.log($("div").position());//margin不计入
+//	    $("button").click(function () {
+//	        return $("body").scrollTop(0);
+//		})
+//        $("body").scrollTop(1000);
+//        $("button").click(function () {
+//            console.log($("body").scrollTop());
+//		})
+
+	//	console.log($("div").width());
+	//	console.log($("div").height());
+	//	console.log($("div").innerWidth());//计入padding
+	//	console.log($("div").innerHeight());//计入padding
+	//	console.log($("div").outerWidth());//计入boredr
+	//	console.log($("div").outerHeight());//计入boredr
+
+//	console.log($("div").outerWidth(true));//计入margin
+//	console.log($("div").outerHeight(true));//计入margin
+
+//    $(document).onready=function () {
+//        //当文档结构加载完运行JS
+//	}
+//    $("div").on("click mouseover",function () {
+//        alert(1);
+//	}) ;
+//    $("div").on("click.aa",function () {
+//        alert(1);
+//	})
+//    $("div").off("click.aa");
+//    $("section div").on("click",function () {
+//        alert(1);
+//	})
+//	$("div").one("click", function(){
+//		alert("来一发");
+//	});
+//    $("section").on("click",function () {
+//        console.log(1);
+//	})
+//    $("section div").on("click",function () {
+//		console.log(11);
+//	})
+////	$("section div").trigger("click");
+//	$("section div").triggerHandler("click");
+
+
+
+
+
+
+</script>

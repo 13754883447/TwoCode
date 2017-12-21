@@ -1,0 +1,82 @@
+1. html5
+- 语义化
+- localStorage 
+- audio
+- canvas
+- 新标签,新属性
+- https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5
+
+2. css3
+- 变形
+- 过渡
+- 动画
+- 字体图标
+- 响应式
+- 移动端布局
+- 框架
+- sass
+- 新属性
+- http://nate-river.github.io/css3/
+
+3. javascript
+- 数据类型(火线)
+- 表达式，值
+- 闭包
+- DOM
+- 事件委托 事件流 
+- 浏览器的事件循环机制（同步和异步）
+- ajax XMLHttpRequest
+- jquery 
+- jquery 插件
+- 编程能力
+- https://www.leetcode.com
+- 编码的奥妙
+- 程序是怎样跑起来的
+- 计算机程序的构造和解释
+
+4. php + mysql
+- php语法  (前端 后端)
+- web服务器 apache
+- http协议(火线)
+- mvc框架
+- mysql语法
+- 网站搭建
+
+5. vue.js
+- 组件化开发思想
+- 虚拟DOM
+- 最小代价渲染
+- 前端自动化(node.js webpack webpack-dev-server babel vue-cli create-react-app)
+- 前端自动化的配置以及添加一些功能
+- 组件
+- 配置项
+- 路由
+- 打包
+- 和后台的结合
+
+7. react.js
+- 组件化开发思想
+- 虚拟DOM
+- 元素 组件
+- props state
+- 生命周期
+- 事件
+- 组件交互
+- 路由
+- 网络交互
+- 打包发布 
+- 和服务器的结合
+
+8. react-native
+新闻app
+......
+
+
+6. node.js
+- 模块
+- npm （全局包）
+- 内置模块 （火线）
+- 外置常用模块（）
+- 服务器 express 中间件 6大中间件
+- 前端自动化 
+- 日常使用（爬虫,操作文件）（抓取歌词 抓取新闻 抓取图片）

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+    function setCookie(key,value,index) {
+        if(time){
+        	let now=new Date();
+        	now.setTime(now.getTime()+time*1000);
+        	document.cookie=key+"="+value+";expires"+now.toGMTString();
+        }else{
+        	document.cookie=key+"="+value;
+        }
+	}
+	function getCookie(key) {
+		var cookies=document.cookie;
+		var arr = cookies.split('; ');
+		for(var i=0;i<arr.length;i++){
+			var brr=arr[i].split("=");
+			console.log(brr);
+			if(brr[0]==key){
+				return brr[1];
+			}
+		}
+		return false;
+	}
+	function  delCookie(key) {
+		let now=new Date();
+		now.setTime(now.getTime()-1); //设置比当前时间短
+		document.cookie=key+"=sss;expires="+now.toGMTString();
+	}
+	setCookie("zhanghao","admin",20);//写入Cookie的账号
+	setCookie("pass","12312")//写入Cookie的密码
+	getCookie("zhanghao");//获取账号
+    getCookie("pass");
+</script>

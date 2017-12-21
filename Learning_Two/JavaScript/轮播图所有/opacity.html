@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .box{
+        width:1200px;
+        height:535px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .xiaobox1{
+        width:1200px;
+        height: 100%;
+    }
+    .left{
+        width:40px;
+        height:40px;
+        background: rgba(0,0,0,0.5);
+        text-align: center;
+        line-height: 40px;
+        color: white;
+        font-size: 28px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index:99;
+    }
+    .right{
+        width:40px;
+        height:40px;
+        background: rgba(0,0,0,0.5);
+        text-align: center;
+        line-height: 40px;
+        color: white;
+        font-size: 28px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index:99;
+    }
+    .xiaobox1 li{
+        width:100%;
+        height:100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+    li.opacity{
+        opacity:1;
+    }
+    .xiaobox1 li img{
+        width:100%;
+        height:100%;
+    }
+    .lunbo{
+        width:90px;
+        height:20px;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .lunbo li{
+        width:20px;
+        height:20px;
+        border-radius: 50%;
+        background: #000;
+    }
+    li.lunboxz{
+        background: red;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="left">&lt;</div>
+    <div class="right">&gt;</div>
+    <ul class="xiaobox1">
+        <li class="opacity"><img src="301314.jpg" alt=""></li>
+        <li><img src="304170.jpg" alt=""></li>
+        <li><img src="63287417_p0.jpg" alt=""></li>
+    </ul>
+    <ul class="lunbo">
+        <li class="lunboxz"></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+<script>
+    window.onload=function () {
+		let box=document.querySelector(".box");
+		let left=document.querySelector(".left");
+		let right=document.querySelector(".right");
+		let lunboli=document.querySelectorAll(".lunbo>li");
+		let tu=document.querySelectorAll(".xiaobox1>li");
+        let flag=true;
+        let index=0;
+        let t=setInterval(move,2000);
+        function move(way="r") {
+            if (flag){
+            	flag=false;
+
+            if(way=="r"){
+            	index++;
+            	if(index>=tu.length){
+            		index=0;
+                }
+            	tu.forEach(function (value,n) {
+                    value.classList.remove("opacity");
+                    lunboli[n].classList.remove("lunboxz");
+				})
+                tu[index].classList.add("opacity");
+            	lunboli[index].classList.add("lunboxz");
+            }
+            if (way=="l"){
+            	index--;
+            	if(index<0){
+            		index=tu.length-1;
+                }
+				tu.forEach(function (value,n) {
+					value.classList.remove("opacity");
+					lunboli[n].classList.remove("lunboxz");
+				})
+				tu[index].classList.add("opacity");
+				lunboli[index].classList.add("lunboxz");
+            }
+			}
+			tu.forEach(function (value) {
+                value.addEventListener("transitionend",function () {
+                    flag=true;
+				})
+			})
+		}
+
+        box.onmouseover=function () {
+            clearInterval(t);
+		}
+		box.onmouseout=function () {
+            t=setInterval(move,2000);
+		}
+
+
+		right.onclick=function () {
+            move();
+		}
+        left.onclick=function () {
+           move("l");
+		}
+
+		lunboli.forEach(function (arr,brr) {
+			arr.onclick=function () {
+				lunboli.forEach(function (a,b) {
+					a.classList.remove("lunboxz");
+					tu[b].classList.remove("opacity");
+				});
+				this.classList.add("lunboxz");
+				tu[brr].classList.add("opacity");
+				index=brr;
+			}
+		})
+
+
+
+	}
+
+
+
+
+
+
+</script>
+</html>
+

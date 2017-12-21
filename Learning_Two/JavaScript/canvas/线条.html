@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    canvas{
+        border:1px solid #ccc;
+    }
+</style>
+<body>
+<canvas width="500" height="500"></canvas>
+</body>
+<script>
+    let canvas=document.querySelector("canvas");
+    let paint=canvas.getContext("2d");
+    paint.beginPath();//绘制路径
+    paint.moveTo(0,0);//开始
+    paint.lineTo(0,100);//线条
+    paint.closePath();//路径闭合
+    paint.strokeStyle="red";
+    paint.stroke();
+</script>
+</html>

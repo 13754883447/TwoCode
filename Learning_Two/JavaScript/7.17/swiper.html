@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <link rel="stylesheet" href="swiper.min.css">
+    <script src="swiper.jquery.min.js"></script>
+</head>
+<style>
+    .swiper-slide{
+        width: 400px;
+        height: 400px;
+    }
+    #bb>img{
+        width: 100%;
+        height: 200px;
+    }
+</style>
+<body>
+<div id="aa">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/307332_422.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/305753_880_510_70.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/306761.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295803.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295782.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295783.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295804.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295809.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/306761.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295783.jpg" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>     <!-- 轮播点-->
+        <div class="swiper-button-next"></div>     <!-- 下一张right-->
+        <div class="swiper-button-prev"></div>     <!-- 上一张left-->
+    </div>
+</div>
+<div id="bb">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/307332_422.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/305753_880_510_70.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/306761.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295803.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/295804.jpg" alt=""></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<div id="cc">
+    <!-- Swiper -->
+    <div class="swiper-container swiper-container-h">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/307332_422.jpg" alt=""></div>
+            <div class="swiper-slide">
+                <div class="swiper-container swiper-container-v">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="img/305753_880_510_70.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/306761.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/306761.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/307332_422.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="img/295804.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-v"></div>
+                </div>
+            </div>
+            <div class="swiper-slide"><img src="img/305753_880_510_70.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/306761.jpg" alt=""></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-h"></div>
+    </div>
+</div>
+</body>
+<script>
+	var swipera = new Swiper('#aa>.swiper-container',{
+		pagination: '.swiper-pagination',
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+		paginationClickable: true,
+		spaceBetween: 30,
+		centeredSlides: true,
+		autoplay: 2500,
+		autoplayDisableOnInteraction: false,
+        loop:true,
+	});
+	var swiperb = new Swiper('#bb>.swiper-container', {
+		pagination: '.swiper-pagination',
+		effect: 'cube',
+		grabCursor: true,
+		cube: {
+			shadow: true,
+			slideShadows: true,
+			shadowOffset: 20,
+			shadowScale: 0.94
+		},
+        loop:true,
+	});
+	var swiperH = new Swiper('.swiper-container-h', {
+		pagination: '.swiper-pagination-h',
+		paginationClickable: true,
+		spaceBetween: 50
+	});
+	var swiperV = new Swiper('.swiper-container-v', {
+		pagination: '.swiper-pagination-v',
+		paginationClickable: true,
+		direction: 'vertical',
+		spaceBetween: 50
+	});
+</script>
+</html>

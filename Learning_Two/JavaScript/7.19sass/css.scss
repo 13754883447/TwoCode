@@ -1,0 +1,124 @@
+//$color:red;
+//$width:200px;
+//$height:200px;
+//$color1:blue;
+//$arr:12px 25px 40px 60px;
+//.div{
+//  background-color: $color;
+//  width: $width;
+//  height: $height;
+//}
+//.div{
+//  >p{
+//    color: $color;
+//  }
+//  margin: {
+//    left: $width;
+//    right: $height;
+//  }
+//  &:hover{
+//    background: $color1;
+//  }
+//  &:after{
+//  content: "1323";
+//}
+//}
+//.div + input{
+//  width: $width;
+//  height: $height;
+//  margin: $arr;
+//}
+//$max:40px;
+//@mixin op($fangxiang,$lineheight,$font-size){//形参
+//  width: $max;
+//  height: $max;
+//  position: fixed;
+//  #{$fangxiang}:15px;
+//  background: $color;
+//  line-height: $lineheight;
+//  color: $color1;
+//  font-size:$font-size;
+//
+//}
+//.right{
+//  @include op(right,$max,28px);//实参
+//}
+//.left{
+//  @include op(left,$max,46px);//实参
+//}
+
+//十二栅格
+$shange:12;
+$padding:15px;
+.container{
+  box-sizing: border-box;
+  margin:0 auto;
+  padding:{
+    left:$padding;
+    right:$padding;
+  }
+}
+.row{
+  margin:{
+    left:-$padding;
+    right:-$padding;
+  }
+  box-sizing: border-box;
+  overflow: hidden;
+}
+@mixin every($type){
+  @for $i from 1 through $shange{  //through 1-12是1-12               to 1-13 才是1-12
+  .col-#{$type}-#{$i}{
+    width: 100%/$shange*$i;
+    float: left;
+    padding: {
+      left: $padding;
+      right:$padding;
+    };
+    box-sizing: border-box;
+    position: relative;
+  }
+    .col-#{$type}-offset-#{$i} {
+      margin-left: 100%/$shange*$i;;
+    }
+    .col-#{$type}-push-#{$i} {  //push推
+      left: 100%/$shange*$i;;
+    }
+    .col-#{$type}-pull-#{$i} {  //pull拉
+      right: 100%/$shange*$i;;
+    }
+}
+  .#{$type}-hidden{//隐藏的一个
+    display: none;
+  }
+}
+//@include shiershanhe(ms)//如果是一个
+//$arr:md,sm,lg,xs;//一堆
+//@each $val in $arr{//each
+//  @include shiershange($val);//引用
+//}
+//检测设备屏幕大小
+//@media  screen and (max-width: 768px){
+  .container{
+    width: 100%;
+  }
+  @include  every(xs);//默认最小屏 优先级
+//}
+@media  screen and (min-width: 768px){//如果最小为768px 也就是大于768px的时候
+  .container{
+    width: 750px;
+  }
+  @include  every(sm);
+}
+@media  screen and (min-width: 992px){//如果最小为992px 也就是大于992px的时候
+  .container{
+    width: 970px;
+  }
+  @include  every(md);
+}
+@media  screen and (min-width: 1200px){//如果最小为1200px 也就是大于1200px的时候
+  .container{
+    width: 1170px;
+  }
+  @include  every(lg);
+}

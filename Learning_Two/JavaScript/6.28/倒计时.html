@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+距离2090年还有 <span></span>天,<span></span>时,<span></span>分,<span></span>秒,<span></span>毫秒
+</body>
+</html>
+<script>
+ window.onload=function () {
+ 	let span=document.querySelectorAll("span");//获取全部的span
+     function move() {
+     	let array=[];//创建一个空数组，用来放置天时分秒毫秒
+     	let weilai=new Date(2090,1,2,8,0,0);//目标时间
+     	let xianzai=Date.now();//现在时间
+     	let time=weilai.getTime()-xianzai;//获取目标时间到现在时间的时间戳
+     	let day=Math.trunc(time/1000/60/60/24);//计算天数
+     	array.push(day);//把天数放到array[]中
+     	let hours=Math.trunc(time%(1000*60*60*24)/(1000*60*60));//对天数取余,并获取小时数
+     	array.push(hours);//把小时数放到数组中
+     	let minu= Math.trunc(time%(1000*60*60)/(1000*60));//对小时取余,并获取分数
+     	array.push(minu);//把分数放到数组中
+     	let ser=Math.trunc(time%(1000*60)/1000);//对分取余,并获取秒数
+     	array.push(ser);//把秒数放到数组中
+     	let mser=Math.trunc(time%1000);//对时间戳取余，获取毫秒数
+     	array.push(mser);//把毫秒数放到数组中
+        span.forEach(function (value,index) {
+            value.innerHTML=array[index];
+		})
+
+
+
+
+
+
+
+	 }
+	 let t=setInterval(move,1);
+ }
+</script>

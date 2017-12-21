@@ -1,0 +1,76 @@
+//1200    1170  lg
+//992     970   md
+//768     750   sm
+//768以下        xs
+//container
+//row
+//col
+$count:12;
+$padding:15px;
+.container{
+    box-sizing: border-box;
+    margin:0 auto;
+    padding:{
+      left:$padding;
+      right:$padding;
+    }
+}
+.row{
+    margin:{
+      left:-$padding;
+      right:-$padding;
+    }
+    box-sizing: border-box;
+    overflow: hidden;
+}
+@mixin  every($type){
+  @for $i from 1 through $count{
+    .col-#{$type}-#{$i}{
+      width:100%/$count*$i;
+      float:left;
+      padding:{
+        left:$padding;
+        right:$padding;
+      }
+      box-sizing: border-box;
+      position: relative; //相对定位
+    }
+    .col-#{$type}-offset-#{$i} {
+       margin-left: 100%/$count*$i;;
+    }
+    .col-#{$type}-push-#{$i} {  //push推
+        left: 100%/$count*$i;;
+    }
+    .col-#{$type}-pull-#{$i} {  //pull拉
+        right: 100%/$count*$i;;
+    }
+  }
+  .#{$type}-hidden{
+    display: none;
+  }
+}
+
+@media  screen and (min-width: 1200px){
+    .container{
+      width: 1170px;
+    }
+  @include  every(lg);
+}
+@media  screen and (max-width: 1200px) and (min-width: 992px){
+  .container{
+    width: 970px;
+  }
+  @include  every(md);
+}
+@media  screen and (max-width: 992px) and (min-width: 768px){
+  .container{
+    width: 750px;
+  }
+  @include  every(sm);
+}
+@media  screen and (max-width: 768px){
+  .container{
+    width: 100%;
+  }
+  @include  every(xs);
+}

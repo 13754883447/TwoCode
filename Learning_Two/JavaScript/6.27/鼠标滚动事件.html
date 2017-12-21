@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="animate.js"></script>
+</head>
+<style>
+    html{
+        width: 100%;
+        height:100%;
+    }
+    body{
+        width: 100%;
+        height:100%;
+
+    }
+    *{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .box{
+        width:100%;
+        height:100%;
+        overflow: hidden;
+        position: relative;
+    }
+    .box>li{
+       width: 100%;
+       height: 100%;
+        position: absolute;
+        left: 0;
+        top:100%;
+
+    }
+    li.active{
+        top:0;
+    }
+    .box>li img{
+        width:100%;
+        height:100%;
+    }
+    .lunbo{
+        width:20px;
+        height:100px;
+        position: fixed;
+        right: 20px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 99;
+    }
+    .lunbo>li{
+        width:20px;
+        height:20px;
+        border-radius: 50%;
+        background-color: #43ffe9;
+        margin-top: 5px;
+    }
+    li.xuanzhong{
+        background: red;
+    }
+</style>
+<body>
+<ul class="box">
+    <li class="active"><img src="img/301314.jpg" alt=""></li>
+    <li><img src="img/302205.jpg" alt=""></li>
+    <li><img src="img/304170.jpg" alt=""></li>
+    <li><img src="img/304562.jpg" alt=""></li>
+</ul>
+
+<ul class="lunbo">
+    <li class="xuanzhong"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+window.onload=function () {
+//	获取
+	let box=document.querySelector(".box");
+	let boxli=document.querySelectorAll(".box>li");
+	let lunbo=document.querySelector(".lunbo");
+	let lunboli=document.querySelectorAll(".lunbo>li");
+	let height=document.documentElement.clientHeight;//获取视口,窗口(document)的高度.
+    let index=0;//当前所在的坐标
+    let next=0;//下一张要在哪里
+    let flag=true; //开关
+//函数封装状态下    三个假参，第一个是要执行的程序，第二个是鼠标向上执行的函数，第三个是鼠标向下要执行的函数.
+	function mousewheel(dom,upfun,downfun) {//dom是形式参数，upfun,downfun也是形式参数(假参);用来接收实参(实际参数);
+		//谷歌火狐IE判断  兼容问题
+		if(dom.addEventListener){
+			dom.addEventListener("mousewheel",wheel,false);//谷歌
+			dom.addEventListener("DOMMouseScroll",wheel);//火狐
+		}else{
+			dom.attchEvent("onmousewheel",wheel);//IE
+		}
+		function wheel(e) {
+			//谷歌向上是120向下是-120;火狐向上是-3,向下是3.
+			if (e.wheelDelta == 120 || e.detail == -3) {
+				upfun.call(dom);//如果事件是鼠标向上，执行upfun(鼠标向上执行的函数);
+			} else if (e.wheelDelta == -120 || e.detail == 3) {
+				downfun.call(dom);//如果事件是鼠标向下，执行downfun(鼠标向下执行的函数);
+			}
+		}
+	}
+//	鼠标向上移动
+		function upfun() {
+			if (flag) {
+				flag = false;//进来关掉开关，动画未完成之前无法换到另一张
+				next = index + 1;//向上+1;
+				if (next >= boxli.length) {//如果当next大于boxli的长度，初始为0;
+					next = 0;
+				}
+				boxli[next].style.top = "100%";//始终让下一张在下面等着
+				animate(boxli[index], {top: -height});//让当前的跑到上面，因为已经过去了。
+				animate(boxli[next], {top: 0}, function () {//让下一张显示到当前
+					flag = true;//动画开关
+				})
+				lunboli[index].classList.remove("xuanzhong");//轮播当前去除选中，因为下一张已经出来了
+				lunboli[next].classList.add("xuanzhong");//轮播点下一张加上选中效果，以同步画面
+				index=next;//同步必加，index值变为next；
+			}
+
+		}
+		//当鼠标向下滑动触发的事件
+		function downfun() {
+			if (flag) {
+				flag = false;//开关
+				next = index - 1;//向下-1
+				if (next < 0) {
+					next =  boxli.length-1;//如果下一张小于0，他就会被初始为了图片集合的长度-1;不加-1的话，是空白的因为有0；
+				}
+				boxli[next].style.top = "-100%";//让下一张在上面等着
+				animate(boxli[index], {top: height});//当前的跑到下面
+				animate(boxli[next], {top: 0}, function () {//让下一张显示到当前,添加动画开关
+					flag = true;
+				})
+				lunboli[index].classList.remove("xuanzhong");//去除当前轮播点的选中效果，同步画面
+				lunboli[next].classList.add("xuanzhong");//轮播点的选中效果添加到下一张图片，同步画面
+				index=next;//同步
+			}
+		}
+		//轮播点击，画面同步
+    lunboli.forEach(function (value,n) {
+    	//集合不能添加onclick,所以遍历
+        value.onclick=function () {
+        	//当用户点击的大于当前的index(值),要执行那个动画;
+			if(n>index){
+				//向上
+				boxli[n].style.top = "100%";
+				animate(boxli[index], {top: -height});
+				animate(boxli[n], {top: 0}, function () {
+					flag = true;
+				})
+			}else if(n<index){//向下
+				boxli[n].style.top = "-100%";
+				animate(boxli[index], {top: height});
+				animate(boxli[n], {top: 0}, function () {
+					flag = true;
+				})
+			}else if(n==index){//如果用户点击了当前
+				return;//返回,什么都不做
+			}
+			lunboli[index].classList.remove("xuanzhong");//取消当前轮播点的选中效果。
+			lunboli[n].classList.add("xuanzhong");//把选中效果添加到用户点击的轮播点。
+			index=n;//把index(当前)等于用户点击的轮播点,同步.执行upfun,downfun，会从用户点击的位置开始执行.
+		}
+	})
+//box使用mousewheel函数,upfun,downfun函数.
+	mousewheel(box,upfun,downfun);//mousewheel(实际参数),用来给假参就是上面的函数传值.box是要执行的模块(参数),upfun是用户向上点击时要运行的函数,downfun是用户向下点击时要运行的函数.
+
+
+
+
+
+
+
+
+
+}
+</script>

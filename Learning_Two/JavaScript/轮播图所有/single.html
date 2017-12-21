@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="animate.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    .box{
+        width: 1200px;
+        height:535px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+    .boxul{
+        width:400%;
+        height:100%;
+        position:absolute;
+        top:0;
+        left: 0;
+    }
+    .boxul li{
+        width: 1200px;
+        height:535px;
+        float: left;
+    }
+    .boxul li img{
+        width: 100%;
+        height:100%;
+    }
+    .lunbo{
+        width:100px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 5px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .lunbo li{
+        width:20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: deepskyblue;
+    }
+    .lunbo li.xuanzhong{
+        background: white;
+    }
+    .opacity{
+        display: block;
+    }
+    .left{
+        width: 40px;
+        height: 40px;
+        font-size: 42px;
+        line-height: 38px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom:0;
+        margin: auto;
+        color: #b5b5b5;
+        cursor: pointer;
+        background-color: rgba(0,0,0,0.3);
+        z-index:99;
+        cursor: pointer;
+    }
+    .right{
+        width: 40px;
+        height: 40px;
+        font-size: 42px;
+        line-height: 38px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom:0;
+        margin: auto;
+        color: #b5b5b5;
+        text-align: center;
+        cursor: pointer;
+        color: #b5b5b5;
+        cursor: pointer;
+        background-color: rgba(0,0,0,0.3);
+        z-index:99;
+        cursor: pointer;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="left">&lt;</div>
+    <div class="right">&gt;</div>
+    <ul class="boxul">
+        <li class="opacity"><img src="301314.jpg" alt=""></li>
+        <li><img src="304170.jpg" alt=""></li>
+        <li><img src="63287417_p0.jpg" alt=""></li>
+    </ul>
+    <ul class="lunbo">
+        <li class="xuanzhong"></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+<script>
+    window.onload=function () {
+        let box=document.querySelector(".box");
+        let boxul=document.querySelector(".boxul");
+        let boxulli=document.querySelectorAll(".boxul>li");
+        let lunbo=document.querySelector(".lunbo");
+        let lunboli=document.querySelectorAll(".lunbo>li");
+        let left=document.querySelector(".left");
+        let right=document.querySelector(".right");
+        let width=parseInt(getComputedStyle(box,null).width);
+        let index=0;
+        let t=setInterval(move,2000);
+        let flag=true;
+
+        function move(way="r") {
+            if(flag){
+            	flag=false;
+
+            if(way=="r"){
+            	index++;
+            	if(index>=boxulli.length){
+            		index=0;
+                }
+            }
+            if(way=="l"){
+            	index--;
+            	if(index<0){
+            		index=boxulli.length-1;
+                }
+            }
+			animate(boxul, {left: -index * width},Tween.Linear,function () {
+				flag=true;
+			});
+			boxulli.forEach(function (value,n) {
+				value.classList.remove("opacity");
+				lunboli[n].classList.remove("xuanzhong");
+			})
+			boxulli[index].classList.add("opacity");
+			lunboli[index].classList.add("xuanzhong");
+			}
+		}
+
+        box.onmouseover=function () {
+            clearInterval(t);
+		}
+        box.onmouseout=function () {
+            t=setInterval(move,2000);
+		}
+
+		right.onclick=function(){
+        	move();
+        }
+        left.onclick=function () {
+            move("l");
+		}
+
+
+		lunboli.forEach(function (arr,brr) {
+            arr.onclick=function () {
+                lunboli.forEach(function (a,b) {
+                    a.classList.remove("xuanzhong");
+				})
+                this.classList.add("xuanzhong");
+				animate(boxul, {left: -brr * width},Tween.Linear);
+			}
+		})
+	}
+</script>
+</html>

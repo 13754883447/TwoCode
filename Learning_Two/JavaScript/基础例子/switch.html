@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let a=prompt("请输入符号");
+    let b=prompt("请输入值1");
+	let c=prompt("请输入值2");
+	//输入得都是字符串，所以转化成number数值；
+	b=parseInt(b);
+	c=parseInt(c);
+	switch (a){
+		//当a 是+时,a+b;break以终止循环.不终止会继续执行的!
+        case a="+": alert(b+c);
+        break;
+		//当a 是-时,a-b;break以终止循环.不终止会继续执行的!
+		case a="-": alert(b-c);
+		break;
+		//当a 是*时,a*b;break以终止循环.不终止会继续执行的!
+		case a="*": alert(b*c);
+		break;
+		//当a 是/时,a/b;break以终止循环.不终止会继续执行的!
+		case a="/": alert(b/c);
+		break;
+		//当a 是%时,a%b;break以终止循环.不终止会继续执行的!
+        case a="%": alert(b%c);
+		break;
+//		当条件不符合的时候执行什么
+//        default:alert("请输入合法的数和算数运算符!");
+    }
+</script>

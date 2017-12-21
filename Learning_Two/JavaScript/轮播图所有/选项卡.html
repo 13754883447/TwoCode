@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width:1000px;
+        border: 1px solid #ccc;
+        margin: 0 auto;
+        height:550px;
+        margin-top: 20px;
+    }
+    .biaoti{
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+        height:50px;
+    }
+    .biaoti li{
+        width:25%;
+        height:100%;
+        text-align: center;
+        cursor: pointer;
+        line-height: 50px;
+        border:1px solid #ccc ;
+        border-left:0 ;
+        border-top:0 ;
+    }
+    .biaoti li:nth-child(4){
+        border-right: 0;
+    }
+    li.biaoti-xuazhong{
+        background: red;
+        color: #fff;
+    }
+    .tu{
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+        height:550px;
+    }
+    .tu li{
+        width:100%;
+        height:100%;
+        display: none;
+    }
+    .tu li img{
+        width:100%;
+        height:100%;
+    }
+    li.tu-xuanzhong{
+        width:100%;
+        height:100%;
+        display: block;
+    }
+</style>
+<body>
+<div class="box">
+    <ul class="biaoti">
+        <li class="biaoti-xuazhong">穹</li>
+        <li>尼尔-2B小姐姐</li>
+        <li>初音</li>
+        <li>东方</li>
+    </ul>
+    <ul class="tu">
+        <li class="tu-xuanzhong"><img src="63287417_p0.jpg" alt=""></li>
+        <li><img src="304562.jpg" alt=""></li>
+        <li><img src="304170.jpg" alt=""></li>
+        <li><img src="302205.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+<script>
+    window.onload=function(){
+		let box=document.querySelector(".box");
+        let biaoti=document.querySelector(".biaoti");
+        let biaotili=document.querySelectorAll(".biaoti>li");
+        let tu=document.querySelector(".tu");
+        let tuli=document.querySelectorAll(".tu>li");
+
+        biaotili.forEach(function (value,index) {
+            value.onclick=function () {
+                biaotili.forEach(function (a,b) {
+					a.classList.remove("biaoti-xuazhong");
+					tuli[b].classList.remove("tu-xuanzhong");
+				})
+                	this.classList.add("biaoti-xuazhong");
+                    tuli[index].classList.add("tu-xuanzhong");
+			}
+		})
+	}
+</script>
+</html>

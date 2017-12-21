@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>//我是注释
+    <div>
+        <b></b>
+        <p></p>
+        我是文本
+    </div>
+    <a href="">链接</a>
+</header>
+
+</body>
+<script>
+    //快速获取方式
+	function $(selector,flag=false) {
+
+		if(typeof selector=="string"){
+			if(flag){
+				return document.querySelectorAll(selector);
+			}else{
+				return document.querySelector(selector);
+			}
+		}else if(typeof selector=="function"){
+			window.onload=function () {
+				selector();
+			}
+		}
+	}
+
+
+	$(function () {
+//		//可以直接输出
+//		//输出标签节点的属性
+//        console.log($("div").nodeType);
+//        console.log($("div").nodeName);
+//        console.log($("div").nodeValue);
+//
+//		//输出document(文本)的属性
+//		console.log(document.nodeType);
+//		console.log(document.nodeName);
+//		console.log(document.nodeValue);
+//
+//
+//
+//		//必须获取
+//		//获取文本
+//        let header=$("header");
+//		let text=header.firstChild;
+//		//输出文本节点的属性
+//        console.log(text.nodeType);
+//		console.log(text.nodeName);
+//
+//		console.log(text.nodeValue);
+//		//获取注释    空格、换行算内容
+//		let zhushi=header.nextSibling;
+//		//输出注释节点的属性
+//		console.log(zhushi.nodeType);
+//		console.log(zhushi.nodeName);
+//
+//		console.log(zhushi.nodeValue);
+//
+
+
+//		let  newdiv=document.createElement("div");
+//		newdiv.inearHTML="这是新的";
+//		newdiv.classList.add("box");
+//		newdiv.id="box";
+//		document.body.appendChild(newdiv);
+
+
+//        newdiv.innerHTML="链接";
+//        let sec=document.body.firstElementChild;
+//        sec.appendChild(newdiv);
+//        let a=sec.nextElementSibling;
+//        let b=sec.firstElementChild;
+//        let p=sec.lastElementChild;
+//        sec.insertBefore(a,b);
+//        console.log(newdiv);
+
+
+
+//        let header=$("header");
+//        var clonesection=header.cloneNode(true);
+//        document.body.appendChild(clonesection);
+//        console.log(clonesection);
+
+
+
+
+
+
+
+
+	})
+
+
+</script>
+</html>

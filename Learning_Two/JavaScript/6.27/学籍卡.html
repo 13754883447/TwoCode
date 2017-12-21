@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .box{
+        width:1200px;
+        height:auto;
+        background-color: #ccffcc;
+        box-shadow: 0px 2px 2px 2px #ccffcc;
+        margin: auto;
+    }
+    .biaoti{
+        font-size: 40px;
+        line-height: 60px;
+        text-align: center;
+        border-bottom: 1px solid #33fffc;
+    }
+    .box>table{
+        width:100%;
+        height:auto;
+        text-align: center;
+    }
+    table tr{
+        width:100%;
+        height:40px;
+    }
+    table tr td{
+        width:20%;
+        height:100%;
+    }
+    table tr th{
+        width:20%;
+        height:100%;
+    }
+    button{
+        width:50px;
+        height: 50px;
+        position: fixed;
+        right: 20px;
+        top: 50px;
+        border-radius: 10px;
+        background-color: #ccffcc;
+        border: 0;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="biaoti">学籍卡</div>
+    <table>
+        <tr>
+            <th>学号</th>
+            <th>班级</th>
+            <th>成绩</th>
+            <th>性别</th>
+            <th>功能键</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>张三</td>
+            <td>20</td>
+            <td>男</td>
+            <td>
+                <div class="del">删除</div>
+            </td>
+        </tr>
+    </table>
+    <button>添加</button>
+</div>
+</body>
+</html>
+<script>
+let box=document.querySelector(".box");//获取父元素
+let tbody=document.querySelector("tbody");//获取表格body;
+let button=document.querySelector("button");//获取按钮
+button.onclick=function () {//点击按钮会执行的操作
+	let tr=document.createElement("tr");//生成一个rt
+    //tr在Html中写入的是什么
+	tr.innerHTML=`<tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <div class="del">删除</div>
+            </td>
+        </tr>`;
+	tbody.appendChild(tr);//在tbody中追加tr
+}
+//tbody事件委派
+tbody.onclick=function (e) {
+	let ev=e.target||e.srcElement;//谷歌和IE的兼容问题
+	if(ev.className=="del"){//如果ev的名字所属类名是del的话
+		tbody.removeChild(ev.parentNode.parentNode);//删除ev的父节点的父节点,也就是tr;
+    }else if(ev.nodeName=="TD"&&ev.children.length==0){//否则如果ev的节点名字是TD并且没有子元素的话执行的操作
+		let input=document.createElement("input");//生成input
+		 input.type="text";//input的属性
+		 let va=ev.innerHTML;//声明va就是ev在html中写入
+		 ev.innerHTML="";//清除原来的内容
+		 input.value=va;//Input的Value的值(内容)就是va
+        ev.appendChild(input);//在ev后面追加input
+        input.focus();//点击之后自动获取焦点
+        input.onblur=function () {//input失去焦点之后干什么
+           let value=input.value;//Input的内容就是所写出的内容
+           ev.innerHTML=value;//Input的内容就是所写出的内容
+
+		}
+    }
+
+}
+
+</script>

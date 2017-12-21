@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .div{
+        width: 200px;
+        height:200px;
+        background: red;
+    }
+</style>
+<body>
+<div class="div">
+
+</div>
+</body>
+</html>
+<script>
+//    第二种 封装
+function mousewheel(dom,upfun,downfun) {
+	//谷歌火狐IE判断  兼容问题
+    if(dom.addEventListener){
+		dom.addEventListener("mousewheel",wheel,false);
+        dom.addEventListener("DOMMouseScroll",wheel);
+    }else{
+		dom.attchEvent("onmousewheel",wheel);
+    }
+		function wheel(e) {
+    	//谷歌向上是120向下是-120;火狐向上是-3,向下是3.
+			if (e.wheelDelta == 120 || e.detail == -3) {
+				console.log("向上");
+			} else if (e.wheelDelta == -120 || e.detail == 3) {
+				console.log("向下");
+			}
+		}
+}
+//获取div
+let div=document.querySelector("div");
+//把mousewheel引用到div
+mousewheel(div);
+//    第一种
+//    window.onload=function(){
+///获取div
+//    	let div=document.querySelector(".div")
+///兼容问题判断
+//    	if(div.addEventListener){
+//    		div.addEventListener("mousewheel",wheel,false);///谷歌
+//    		div.addEventListener("DOMMouseScroll",wheel);///火狐
+//        }else{
+//            div.attchEvent("onmousewheel",wheel);///IE
+//        }
+//
+///上面所要运行的函数
+//            function wheel(e){
+///wheelDelta 是谷歌的 向上是120，向下是-120；
+///detail是火狐的 向上是-3,向下是3；
+//    		if(e.wheelDelta==120||e.detail==-3){
+//    			console.log("向上");
+//            }else if(e.wheelDelta==-120||e.detail==3){
+//				console.log("向下");
+//            }
+//        }
+//    }
+</script>

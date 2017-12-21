@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    nav{
+        width: 1004px;
+        height:40px;
+        margin: 0 auto;
+        border:1px solid #ccc;
+    }
+    .ul{
+        width:100%;
+        height:100%;
+    }
+    .ul>li{
+        width:200px;
+        height: 100%;
+        float: left;
+        line-height: 40px;
+        text-align: center;
+        position: relative;
+    }
+    .ul>li>a{
+        text-decoration: none;
+    }
+    .ul>li>ul{
+        width:100%;
+        height:auto;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        overflow: hidden;
+    }
+    .ul>li>ul>li{
+        width:100%;
+        height:40px;
+        border: 1px solid #ccc;
+        border-top: 0;
+    }
+</style>
+<body>
+<nav>
+   <ul class="ul">
+       <li>
+           <a href="">首页</a>
+       </li>
+       <li>
+           <a href="">公司简介</a>
+           <ul>
+               <li>公司来历</li>
+               <li>公司来历</li>
+           </ul>
+       </li>
+       <li>
+           <a href="">新闻中心</a>
+           <ul>
+               <li>公司来历</li>
+               <li>公司来历</li>
+               <li>公司来历</li>
+           </ul>
+       </li>
+       <li>
+           <a href="">产品一览</a>
+           <ul>
+               <li>公司来历</li>
+               <li>公司来历</li>
+               <li>公司来历</li>
+           </ul>
+       </li>
+       <li>
+           <a href="">关于我们</a>
+           <ul>
+               <li>公司来历</li>
+               <li>公司来历</li>
+               <li>公司来历</li>
+               <li>公司来历</li>
+               <li>公司来历</li>
+               <li>公司来历</li>
+           </ul>
+       </li>
+   </ul>
+</nav>
+</body>
+</html>
+<script>
+    $(function () {
+//    	let box=$(".ul>li",true);//获取所有的li 也就是下拉菜单的父元素
+//        let height=$(".ul>li>ul>li").offsetHeight;//获取隐藏li的高度
+//        box.forEach(function (value,index) {
+//			let last=value.lastElementChild;//获取ul 也就是下拉的容器
+//			hover(value,function () {//当鼠标移入到遍历的li时
+//				animate(last,{height:last.children.length*height},500)//执行动画让ul的高度变为子元素的多少个*li的高度
+//			},function () {
+//				animate(last,{height:0},500)//鼠标移出 继续变为0
+//			})
+////			value.onmouseover=function () {
+////				console.log(last)
+////				animate(last,{height:last.children.length*height},500)
+////				}
+////				value.onmouseout=function () {
+////					animate(last,{height:0},500)
+////				}
+//		})
+
+
+
+
+
+
+
+
+
+
+	})
+</script>

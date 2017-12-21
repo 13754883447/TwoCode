@@ -1,0 +1,48 @@
+@media screen and (min-width: 976px){
+	.notice-main,.daohang-main{
+		padding: 0 25px;
+	}
+	.xia,.banner-big{
+		display: block;
+	}
+	.daohang-small,.xia1,.xia2,.footer-small{
+		display: none;
+	}
+}
+@media screen and (max-width: 976px){
+	.notice-main,.daohang-main{
+		padding: 0 25px;
+	}
+	.xia1,.banner-big{
+		display: block;
+	}
+	.daohang-small,.xia,.xia2,.footer-small{
+		display: none;
+	}
+}
+@media screen and (max-width: 767px){
+	.daohang-small,.footer-small{
+		display: block;
+	}
+	.daohang-big,.footer{
+		display: none;
+	}
+	.xia2,.big{
+		display: block;
+	}
+	.xia,.xia1{
+		display: none;
+	}
+	.btext{
+		width: 80%;
+	}
+	.btext2{
+		font-size: 14px !important;
+	}
+	.btext3{
+		font-size: 22px !important;
+	}
+	.btext4,.btext5{
+		font-size: 14px !important;
+	}
+}

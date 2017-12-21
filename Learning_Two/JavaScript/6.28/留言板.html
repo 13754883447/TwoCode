@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="iconfont/iconfont.css">
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    section{
+        width:800px;
+        height:100%;
+        background-color: aquamarine;
+        margin: 0 auto;
+        padding-top: 10px;
+    }
+    h1{
+        width:100%;
+        height:40px;
+        line-height: 40px;
+        font-size: 28px;
+        text-align: center;
+        font-weight: 100;
+        border-bottom: 1px dashed #ccffcc;
+    }
+    .box{
+        width:100%;
+        height:auto;
+        border-bottom: 1px solid #cc0000;
+        padding-bottom: 5px;
+
+    }
+    .textarea{
+        width:100%;
+        height:100px;
+        border: 1px solid #33fabf;
+        margin-bottom: 5px;
+        padding: 0;
+    }
+    .fabu{
+        font-size: 16px;
+        background: red;
+        color: white;
+        text-align: right;
+    }
+    h2{
+        width:100%;
+        height:30px;
+        line-height: 30px;
+        font-weight: 100;
+        font-size: 14px;
+        border-bottom: 1px solid #ccffcc;
+        margin-bottom: 5px;
+    }
+    button{
+        width:60px;
+        height:30px;
+        border-radius: 5px;
+        background: red;
+        border: 0;
+        color: white;
+        float: right;
+    }
+    .button{
+        width:100%;
+        height:30px;
+    }
+    ul{
+        width:100%;
+        height:auto;
+    }
+    ul li{
+        height: auto;
+        padding: 0 40px 0 10px;
+        position: relative;
+    }
+    .biaozhu{
+        height:20px;
+        text-align: right;
+        font-size: 12px;
+    }
+    .active{
+        color: red;
+    }
+    .del{
+        position: absolute;
+        top: 0;
+        right: 2px;
+    }
+</style>
+<body>
+<section>
+    <h1>留言板</h1>
+    <div class="box">
+        <h2>有什么新鲜事?说出来和大家分享分享.</h2>
+        <div>
+            <input type="textarea" class="textarea">
+        </div>
+        <p>总共可以输入60个字,您当前已经输入<span>0</span>个字,还可以输入<span>60</span>个字</p>
+    <div class="button"><button>发布</button></div>
+    </div>
+    <h1>最新动态</h1>
+    <ul>
+    </ul>
+</section>
+</body>
+</html>
+<script>
+window.onload=function () {
+    let input=document.querySelector("input");//获取
+    let button=document.querySelector("button");
+    let ul=document.querySelector("ul");
+    button.onclick=function () {//点击按钮
+    	let li=document.createElement("li");//生成一个li
+    	let time=new Date();//创建一个为时间的变量
+        //把input的内容装到一个容器里面
+		let value=input.value;
+    	li.innerHTML=`${value}
+    	<p class="biaozhu iconfont">
+    	    <span>&#xe713;${time}</span>
+    	    <span class="iconfont">&#xe60b;0</span>
+    	</p>
+    	<div class="del iconfont">&#xe682;</div>
+        `;//li在页面中显示的内容是什么
+    	ul.appendChild(li);//在父元素也就是ul的后面追加一个名为li的子元素
+        input.value="";//输完之后input变成初始值
+		len[0].innerHTML=input.value.length;//输完之后你当前输入初始成0
+		len[1].innerHTML=60-input.value.length;//输完之后还可输入初始成60
+	}
+	ul.onclick=function (e) {//事件委派,e是用户鼠标点击发生的事件,onclick鼠标点击
+        let mubiao=e.target||e.srcElement;//获取事件源,也就是用户点击在了哪里
+        //条件:如果事件源的节点名字是span，并且是所属类名是iconfont或者所属类名是iconfont active的话要干什么
+        if(mubiao.nodeName=="SPAN"&&mubiao.className=="iconfont"||mubiao.className=="iconfont active"){
+			if(mubiao.className=="iconfont active"){//如果类名是iconfont active时
+				alert("谢谢点击，但是一次就够了.要不我吃不消...");//弹出此对话框
+			}else if(mubiao.className=="iconfont"){//如果类名是iconfont时
+				mubiao.classList.add("active");//给此事件源添加一个名为active的类.
+               mubiao.innerHTML="&#xe60b;"+1;//布局错误，目前只能换成1
+			}
+        }
+        if(mubiao.className=="del iconfont"){//如果目标事件源的所属类名是del
+        	ul.removeChild(mubiao.parentNode);//删除目标事件源的父节点,也就是li,此条微博
+        }
+	}
+	//获取可以输入多少字
+	let len=document.querySelectorAll(".box>p>span");
+    document.onkeyup=function(){
+    	let inputvalue=input.value;//已经输入了多少个字
+    	if(inputvalue.length>60){//当输入的大于60个字符的话
+    		input.value=inputvalue.substr(0,60);//再怎么输入指截取60个单位
+        }else{//否则干嘛
+			len[0].innerHTML=input.value.length;//你输入了多少个 实时变化
+			len[1].innerHTML=60-input.value.length;//你还能输入多少个 实时变化
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+</script>

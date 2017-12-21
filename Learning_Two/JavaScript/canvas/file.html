@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file">
+</body>
+<script>
+    let file=document.querySelector("input");
+    file.onchange=function () {
+    	let data=this.files[0];//拿到文件的所有信息
+        var img=new FileReader();//专门读取文件
+        img.readAsDataURL(this.files[0]);//把它读成url的格式
+        img.onload=function () {//当img被读取完触发onload事件
+            let img=document.createElement("img");
+            img.src=img.result;
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//	let a=prompt("请输入您的年龄！");
+//    function fun(a) {//a是形式参数
+//		if(typeof parseInt(a) == "number"){//输入的是字符串 不是numeber 所以要parseInt
+//			//条件为true是执行什么
+//			if(a>=18){
+////			条件1
+//				alert("您已成年");
+//			}else{
+////			条件1不为ture是则
+//				alert("您未成年");
+//			}
+////		条件为flase
+//		}else{
+//			alert("请输入数字!");
+//		}
+//	}
+//	fun(a)//这个a是实际参数
+//
+
+
+let s2=parseInt(prompt("请输入值1"));//输入的都是字符串
+let s1=prompt("请输入运算符号");
+let s3=parseInt(prompt("请输入值2"));
+    function sw(a,b,c) {
+		//当a 是+时,a+b;break以终止循环.不终止会继续执行的!
+	    if(a=="+"){
+	    	alert(b+c);//如果a是+时,a+b
+        }
+		if(a=="-"){
+			alert(b-c);//如果a是-时,a-b;
+		}
+		if(a=="*"){
+			alert(b*c);//如果a是*时,a*b;
+		}
+		if(a=="/"){
+			alert(b/c);//如果a是/时,a/b
+		}
+		if(a=="%"){
+			alert(b%c);//如果a是%时,a%b;
+		}
+	}
+	sw(s1,s2,s3);//运行函数 传入实际参数
+</script>

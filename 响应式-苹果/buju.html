@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body,html{
+            width: 100%;
+            height:100%;
+            /*overflow: hidden;*/
+        }
+        .fullscreen{
+            width: 100%;
+            text-align: center;
+
+        }
+        /*全屏一定要定位*/
+        .fullscreen ul.pro{
+            position: relative;
+        }
+        .fullscreen ul.pro li{
+            position: absolute;
+            left:0;
+            top:0;
+            display: none;
+            overflow: hidden;
+        }
+        .fullscreen ul.pro li.active{
+            display: block;
+        }
+        .fullscreen ul.pro li img{
+            width: 100%;
+            height: 100%;
+        }
+        .left,.right{
+            color:red;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top:50%;
+            margin-top: -20px;
+            font-size: 20px;
+            font-family: '宋体';
+            line-height: 40px;
+            text-align: center;
+            border:1px solid #444;
+            border-radius: 50%;
+            z-index: 500;
+        }
+        .left{
+            left:3%;
+        }
+        .right{
+            right: 5%;
+        }
+
+        @media screen and (min-width:992px){
+            .fullscreen {
+                height: 480px;
+            }
+        }
+        @media screen and (min-width:750px) and(max-width:992px){
+            .fullscreen{
+                height:300px;
+            }
+        }
+        @media screen and (max-width:750px){
+            .fullscreen{
+                height:200px;
+            }
+        }
+
+        @keyframes rightout {
+            0%{
+                transform: translateX(0%) scale(1);
+            }
+            100%{
+                transform: translateX(10%)  scale(0.8);
+            }
+        }
+        @keyframes leftin {
+            0%{
+                transform: translateX(-100%);
+            }
+            100%{
+                transform: translateX(0%);
+            }
+
+        }
+        @keyframes leftout {
+            0% {
+                transform: translateX(0%) scale(1);
+            }
+            100% {
+                transform: translateX(-10%) scale(0.8);
+            }
+
+        }
+        @keyframes rightin {
+            0%{
+                transform: translateX(100%);
+            }
+            100%{
+                transform: translateX(0%);
+            }
+        }
+
+
+        .fullscreen ul.pro li.rightout{
+            display: block;
+            display: block;
+            animation: rightout 1s  linear  forwards;
+        }
+        .fullscreen ul.pro li.leftout{
+            display: block;
+            animation: leftout 1s  linear forwards;
+        }
+        .fullscreen ul.pro li.rightin{
+            display: block;
+            z-index: 100;
+            animation: rightin 1s  linear;
+        }
+        .fullscreen ul.pro li.leftin{
+            z-index: 100;
+            display: block;
+            animation: leftin 1s  linear  ;
+         }
+
+
+        ul.line{
+            width: 300px;
+            height:10px;
+            position: absolute;
+            left:50%;
+            margin-left: -150px;
+            bottom:30%;
+            z-index:700;
+        }
+        ul.line li{
+            width: 30%;
+            height: 100%;
+            box-sizing: border-box;
+            border-radius: 10%;
+            float: left;
+            margin-right:5px;
+            border:1px solid #000;
+        }
+        ul.line li div{
+            width: 0;
+            height: 100%;
+            background: red;
+        }
+        ul.line li.active  div{
+            animation: show  1s linear;
+        }
+        ul.line li.active2 div{
+            width: 100%;
+        }
+        @keyframes show  {
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<section  class="fullscreen">
+     <ul class="pro">
+         <li class="active">
+             <img src="img/QQ图片20170524190104.jpg" alt="">
+         </li>
+         <li >
+             <img src="img/iphone_7_large.jpg" alt="">
+         </li>
+         <li>
+             <img src="img/QQ图片20170524190104.jpg" alt="">
+         </li>
+
+     </ul>
+     <ul  class="line">
+        <li class="active">
+            <div ></div>
+        </li>
+        <li>
+            <div></div>
+        </li>
+        <li>
+            <div></div>
+        </li>
+    </ul>
+    <div class="left">&lt;</div>
+    <div class="right">&gt;</div>
+</section>
+</body>
+<script>
+    let now=0;
+    let next=0;
+    let lis=$('.fullscreen ul.pro li'); //每张图片
+//    let t=setInterval(move,2000);
+    $('.right').click(function () {
+//        lis.off('animationend.end');
+        next = now+1;
+        if(next>lis.length-1){
+            next = 0;
+        }
+        lis.removeClass();
+        lis.eq(now).addClass('leftout');
+        lis.eq(next).addClass('rightin');
+        liss.parent().removeClass('active2').eq(next).addClass('active2');
+        now=next;
+    })
+    $('.left').click(function () {
+//        clearInterval(t);
+//        lis.off('animationend.end');
+        next=now-1;
+        if(next<0){
+            next = lis.length-1;
+        }
+        lis.removeClass();
+        lis.eq(now).addClass('rightout');
+        lis.eq(next).addClass('leftin');
+        liss.parent().removeClass('active2').eq(next).addClass('active2');
+        now = next;
+    })
+    var liss=$('ul.line li div');
+    liss.on('animationend',function () {
+        next = now+1;
+        if(next>liss.size()){
+            next=0;
+        }
+        lis.eq(now).addClass('leftout');
+        lis.eq(next).addClass('rightin');
+        liss.parent().removeClass('active').eq(next).addClass('active');
+        now = next;
+
+    });
+</script>
+</html>

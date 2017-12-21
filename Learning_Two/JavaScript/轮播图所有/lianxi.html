@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>楼层</title>
+    <script src="animate.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        header{
+            width:100%;
+            height: 100px;
+            background: pink;
+            margin:0 auto;
+        }
+        main{
+            width: 1200px;
+            height: 300px;
+            background: yellow;
+            margin:20px auto;
+        }
+        nav{
+            width: 800px;
+            height: 400px;
+            background: yellowgreen;
+            margin:0 auto;
+        }
+        ul.floor{
+            width: 1000px;
+            height: auto;
+            margin:30px auto;
+        }
+        ul.floor>li{
+            width: 100%;
+            height: 500px;
+            border:1px solid #000;
+            box-sizing: border-box;
+            box-shadow: 0 0 3px #000;
+            margin:20px auto;
+
+        }
+        ul.nav{
+            width:0px;
+            height:0;
+            position: fixed;
+            left:30px;
+            bottom:30px;
+            font-size: 24px;
+            color:#000;
+            text-align: center;
+            line-height: 50px;
+            overflow: hidden;
+            transition: width .5s ,height .5s;
+        }
+        ul.nav>li{
+            width: 100%;
+            height: 50px;
+            border:1px solid pink;
+            box-sizing: border-box;
+        }
+        ul.nav>li.active{
+            color: #fff;
+        }
+        footer{
+            width: 1000px;
+            height: 200px;
+            background: #317EF3;
+            margin: 0 auto;
+        }
+        .search{
+            width: 100%;
+            height: 0px;
+            background: yellow;
+            position: fixed;
+            top:0px;
+            overflow: hidden;
+            z-index:999;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main></main>
+    <nav></nav>
+    <ul class="floor">
+        <li>0001</li>
+        <li>0002</li>
+        <li>0003</li>
+        <li>0004</li>
+        <li>0005</li>
+        <li>0006</li>
+        <li>0007</li>
+        <li>0008</li>
+        <li>0009</li>
+        <li>0010</li>
+        <ul class="nav">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+    </ul>
+    <footer></footer>
+     <div class="search"></div>
+</body>
+<script>
+    window.onload=function () {
+        let nav=document.querySelector('.nav');
+        let floor=document.querySelectorAll('.floor>li');
+        let navs=document.querySelectorAll('.nav>li');
+        let search=document.querySelector('.search');
+        let flag=true;
+        let flag1=false;
+        let color=["pink","red","green","yellow","#00cc00","#ff99ff","blue","#0ff","#ffff00","#F04A08"];
+        let now=0;
+        window.onscroll=function () {
+            let scroll=document.body.scrollTop?document.body:document.documentElement;
+            let scrollTop=scroll.scrollTop;
+            floor.forEach(function (value,index) {
+                if(scrollTop>=value.offsetTop-300){
+                    for(let i=0;i<navs.length;i++){
+                        navs[i].style.background="#fff";
+                        navs[i].classList.remove('active');
+                    }
+                    navs[index].style.background=color[index];
+                    navs[index].classList.add('active');
+                    now=index;
+                }
+            })
+            if(scrollTop>=floor[0].offsetTop-300){
+                if(flag){
+                    flag=false;
+                    animate(search,{height:60},500,function () {
+                         flag1=true;
+                    });
+                    animate(nav,{height:500,width:50},500,function () {
+                        flag1=true;
+                    });
+                }
+            }else{
+                if(flag1){
+                    flag1=false;
+                    animate(search,{height:0},500,function () {
+                        flag=true;
+                    });
+                    animate(nav,{height:0,width:0},500,function () {
+                        flag1=true;
+                    });
+                }
+            }
+        }
+        navs.forEach(function (value,index) {
+            value.onclick=function () {
+                animate(document.body,{scrollTop:floor[index].offsetTop-200},500);
+                animate(document.documentElement,{scrollTop:floor[index].offsetTop-200},500);
+                now=index;
+            }
+            value.onmouseover=function () {
+                value.style.background=color[index];
+
+            }
+            value.onmouseout=function () {
+                if(now!=index){
+                    value.style.background="#fff";
+                    value.style.color="#000";
+                }
+
+
+            }
+        })
+
+    }
+
+</script>
+</html>

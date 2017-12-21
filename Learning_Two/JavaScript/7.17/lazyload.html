@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script src="jquery.lazyload.min.js"></script>
+</head>
+<style>
+    *{
+        list-style: none;
+    }
+    ul{
+        width: 500px;
+        height: auto;
+        margin: 0 auto;
+    }
+    ul li{
+        width: 500px;
+        height: 500px;
+        border: 1px solid #ccc;
+    }
+    ul li img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+<ul>
+    <!--//千万不能加src=""-->
+    <li><img alt="" data-original="img/307332_422.jpg"></li>
+    <li><img alt="" data-original="img/305753_880_510_70.jpg"></li>
+    <li><img alt="" data-original="img/306761.jpg"></li>
+    <li><img alt="" data-original="img/295782.jpg"></li>
+    <li><img alt="" data-original="img/295783.jpg"></li>
+    <li><img alt="" data-original="img/295803.jpg"></li>
+    <li><img alt="" data-original="img/295804.jpg"></li>
+    <li><img alt="" data-original="img/295809.jpg"></li>
+</ul>
+</body>
+</html>
+<script>
+	$(function () {
+		$("ul>li>img").lazyload({
+//            placeholder:"",占位图片
+//            event:"click","点击方式出现"
+//            failurelimit:10 失败的限制
+        });
+	});
+</script>

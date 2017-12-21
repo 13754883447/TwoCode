@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+        list-style: none;
+    }
+    .box{
+        width:400px ;
+        border: 1px solid #ccc;
+    }
+    .boxul{
+        width:100%;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+    .boxul li{
+        width:25%;
+        height: 100%;
+        line-height: 40px;
+        border-right: 1px solid #ccc;
+    }
+    .boxul li:last-child{
+        border-right: 0;
+    }
+    .boxul li.text-xuanzhong{
+        color: white;
+        background-color: #cc0000;
+    }
+    .boxul2{
+        width: 100%;
+        height:360px;
+        border-top: 1px solid #ccc;
+    }
+    .boxul2 li{
+        width:100%;
+        height:100%;
+        display: none;
+    }
+    .boxul2 li img{
+        width: 100%;
+        height:100%;
+    }
+    .boxul2 li.tu-xuanzhong{
+        display: block;
+    }
+</style>
+<body>
+<div class="box">
+    <ul class="boxul">
+        <li class="text-xuanzhong">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <ul class="boxul2">
+        <li class="tu-xuanzhong"><img src="63287417_p0.jpg" alt=""></li>
+        <li><img src="304562.jpg" alt=""></li>
+        <li><img src="304170.jpg" alt=""></li>
+        <li><img src="302205.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+<script>
+    window.onload=function () {
+        function xuanxiangka(paresent) {
+            let text=paresent.querySelectorAll(".boxul>li");
+            console.log(text);
+            let img=paresent.querySelectorAll(".boxul2>li");
+            text.forEach(function (value,index) {
+                value.onclick=function () {
+                    text.forEach(function (value,index) {
+                        value.classList.remove("text-xuanzhong");
+                        img[index].classList.remove("tu-xuanzhong");
+					})
+                    this.classList.add("text-xuanzhong");
+                    img[index].classList.add("tu-xuanzhong");
+				}
+			})
+		}
+		xuanxiangka(document.querySelector(".box"));
+	}
+</script>
+</html>

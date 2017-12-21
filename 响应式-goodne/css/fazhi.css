@@ -1,0 +1,39 @@
+/* 大屏 */
+@media screen and (min-width: 960px) {
+	.neikuan,.daohang{
+		padding: 0 25px;
+	}
+	.neikuan,.daohang,.back{
+		display: block;
+	}
+	.nkzuo-small,.back-center,.back-small{
+		display: none;
+	}
+}
+/* 中频 */
+@media screen and (max-width: 960px) {
+	.neikuan,.daohang{
+		padding: 0 25px;
+	}
+	.neikuan,.daohang,.back-center{
+		display: block;
+	}
+	.nkzuo-small,.back,.back-small{
+		display: none;
+	}
+}
+/* 小屏 */
+@media screen and (max-width:767px ) {
+	.neikuan,.daohang{
+		padding: 0 25px;
+	}
+	.nkzuo-small,.back-small{
+		display: block;
+	}
+	.neikuan,.daohang,.nkzuo,.nkyou,.back,.back-center{
+		display: none;
+	}
+	.tubiao{
+		margin-left: 25%;
+	}
+}

@@ -1,0 +1,37 @@
+script
+		window.onload=function(){
+            var oWrap = document.getElementById('wrap');
+            var oImg = document.getElementsByTagName('img');
+            var oImgLength = oImg.length;
+            var Deg = 360oImgLength;
+            var nowX;
+            var nowY;
+            var lastX;
+            var lastY;
+            var minuseX = 0;
+            var minuseY = 0;
+            var roX = -10;
+            var roY = 0;
+            var timer;
+             给img设置旋转度
+            for(var i=0;ioImgLength;i++){
+                oImg[i].style.transform = 'rotateY('+iDeg+'deg)translateZ(350px)'
+                 语法transition property duration timing-function delay;
+                                   property设置过渡效果的 CSS 属性的名称
+                                   duration完成过渡效果需要多少秒或毫秒
+                                   timing-function速度效果的速度曲线
+                                   delay过渡效果何时开始
+                oImg[i].style.transition = 'transform 1s '+ (oImgLength-1-i)0.1 +'s';
+            }
+
+            mTop();
+
+                window.onresize = mTop;   窗口调整大小的时候
+
+                function mTop(){
+                    var wH = document.documentElement.clientHeight;
+                    oWrap.style.marginTop = wH  2 - 180 + 'px';
+                }
+
+		}
+	script

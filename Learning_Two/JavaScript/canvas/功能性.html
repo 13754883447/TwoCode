@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    canvas{
+        border: 1px solid red;
+    }
+    .xuanzhong{
+        border: #33fabf;
+    }
+</style>
+<body>
+<canvas width="1000" height="1000"></canvas>
+<div class="one">
+    <button id="juxing">绘制矩形</button>
+    <button id="line">绘制线条</button>
+    <button id="yuan">绘制圆形</button>
+    <button id="duobianxing">绘制多边形</button>
+</div>
+<div class="style">
+    <button id="shixin">实心</button>
+    <button id="biankuang">边框</button>
+</div>
+<input type="color" id="color">
+<button id="del">返回上一步</button>
+<input type="file" id="file">
+</body>
+<script>
+
+    let canvas=document.querySelector("canvas");
+    let paint=canvas.getContext("2d");
+    let imgData=paint.getImageData(0,0,canvas.width,canvas.height);
+    let arr=[];
+    let color=document.querySelector("#color");
+    let one=document.querySelector(".one");
+    let juxing=document.querySelector("#juxing");
+    let line=document.querySelector("#line");
+    let yuan=document.querySelector("#yuan");
+	let b;
+	let style=document.querySelector(".style");
+    let sTyle;
+    let shixin=document.querySelector("#shixin");
+    let biankuang=document.querySelector("#biankuang");
+    let duobianxing=document.querySelector("#duobianxing");
+    one.onclick=function (e) {
+        let mubiao=e.target;
+        if(mubiao.id=="juxing"){
+        	juxing.classList.add("xuanzhong");
+			line.classList.remove("xuanzhong");
+			yuan.classList.remove("xuanzhong");
+			duobianxing.classList.add("xuanzhong");
+           b="juxing";
+	}
+	if(mubiao.id=="line"){
+		line.classList.add("xuanzhong");
+		juxing.classList.remove("xuanzhong");
+		yuan.classList.remove("xuanzhong");
+		duobianxing.classList.add("xuanzhong");
+        	b="line";
+	}
+		if(mubiao.id=="yuan"){
+			line.classList.remove("xuanzhong");
+			juxing.classList.remove("xuanzhong");
+			yuan.classList.add("xuanzhong");
+			duobianxing.classList.remove("xuanzhong");
+			b="yuan";
+		}
+		if(mubiao.id=="duobianxing"){
+			line.classList.remove("xuanzhong");
+			juxing.classList.remove("xuanzhong");
+			yuan.classList.remove("xuanzhong");
+			duobianxing.classList.add("xuanzhong");
+			b="duobianxing";
+		}
+	};
+
+
+
+
+
+
+	style.onclick=function (e) {
+        let mubiao=e.target||e.srcElement;
+		if(mubiao.id=="shixin"){
+			shixin.classList.add("xuanzhong");
+			biankuang.classList.remove("xuanzhong");
+            sTyle="shixin";
+        }
+        if(mubiao.id=="biankuang"){
+			shixin.classList.remove("xuanzhong");
+			biankuang.classList.add("xuanzhong");
+			sTyle="biankuang";
+		}
+	}
+    canvas.onmousedown=function(e) {
+		let x = e.offsetX;
+		let y = e.offsetY;
+		canvas.onmousemove = function (e) {
+			let newx = e.offsetX;
+			let newY = e.offsetY;
+			let width = newx - x;
+			let height = newY - y;
+			switch (b) {
+				case "line":
+					paint.beginPath();
+					paint.moveTo(x, y);
+					paint.lineTo(newx, newY);
+					paint.closePath();
+					paint.strokeStyle = color.value;
+					paint.stroke();
+					paint.strokeRect(newx, height, width, height);
+					break;
+
+				case "juxing":
+					paint.clearRect(0, 0, canvas.width, canvas.height);
+					paint.putImageData(imgData, 0, 0);
+					if(sTyle=="shixin"){
+						let linear=paint.createLinearGradient(x,y,newx,newY)
+						linear.addColorStop(0,"red");
+						linear.addColorStop(1,"blue");
+						paint.fillStyle = linear;
+						paint.fillRect(x, y, width, height);
+					};
+					if(sTyle=="biankuang"){
+						let linear=paint.createLinearGradient(x,y,newx,newY)
+						linear.addColorStop(0,"red");
+						linear.addColorStop(1,"blue");
+						paint.strokeStyle = linear;
+						paint.strokeRect(x, y, width, height);
+					};
+					break;
+
+
+                case "yuan":
+
+                	var r=Math.sqrt(Math.pow(newY-y,2));//sqrt平方根 函数 ，pow 返回x的y次幂
+                	paint.beginPath();//绘制路径
+                	paint.arc(x,y,r,0,Math.PI*2,true);
+                	paint.closePath();
+                	paint.shadowOffsetX=30;//阴影
+					paint.shadowOffsetY=30;
+					paint.shadowBlur=30;
+					paint.shadowOffsetColor="#000";
+					if(sTyle=="shixin"){
+						paint.fillStyle=color.value;
+						paint.fill();
+
+					}
+					if(sTyle=="biankuang"){
+						paint.strokeStyle=color.value;
+						paint.stroke();
+					};
+					break;
+
+
+                case "duobianxing":
+//                	let bianshu=prompt("请输入边数");
+                	let n=6;
+                	let  ran=360/n;
+					let r1=Math.sqrt(Math.pow(newx-x,2)+(newY-y,2));
+                	for(let i=0;i<n;i++){
+                		paint.lineTo((x+Math.sin((i*ran+45)*Math.PI/180)*r1),y+Math.cos((i*ran+45)*Math.PI/180)*r1)}
+                	paint.closePath();
+                    if(sTyle=="shixin"){
+						paint.fillStyle=color.value;
+						paint.fill();
+						paint.fillRect(x, y, newx, newY);
+                    }
+					if(sTyle=="biankuang"){
+						paint.strokeStyle=color.value;
+						paint.stroke();
+						paint.strokeRect(x, y, newx, newY);
+					}
+
+                	break;
+			}
+
+			canvas.onmouseup = function (e) {
+				canvas.onmousemove = null;
+				arr.push(imgData)
+
+				imgData = paint.getImageData(0, 0, canvas.width, canvas.height)
+			}
+		}
+	}
+	let dele=document.querySelector("#del");
+
+	dele.onclick=function () {
+
+		if (arr.length<1){
+			alert("呀屎啦你,好好听课");
+
+			return;
+
+		}
+
+		paint.clearRect(0, 0, canvas.width, canvas.height);
+
+		paint.putImageData(arr[arr.length-1],0,0);
+
+		imgData=arr[arr.length-1];
+
+		arr.pop();
+
+	};
+
+
+//
+//	let file=document.querySelector("#file");
+//	file.onchange=function () {
+//		let data=this.files[0];//拿到文件的所有信息
+//		var read=new FileReader();//专门读取文件
+//		read.readAsDataURL(data);//把它读成url的格式
+//		read.onload=function () {//当img被读取完触发onload事件
+//			let img=document.createElement("img");
+//			img.src=this.result;
+//			console.log(this.result);
+////            img.src="302205.jpg";
+//			paint.drawImage(img,50,50);
+//		}
+//	}
+//
+
+
+
+
+
+
+	//    x y x+Math.sin()*r y+Math.cos()*r
+//    x+Math.sin((i*ran+45)*Math.PI/180)*r
+//	y+Math.cos((i*ran+45)*Math.PI/180)*r
+    //
+</script>
+</html>

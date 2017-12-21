@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="animate.js"></script>
+</head>
+
+<style>
+    *{
+        list-style: none;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+    .header{
+        width: 100%;
+        height: 20px;
+        background: #2b81af;
+    }
+    .daohang{
+        width: 1200px;
+        height: 40px;
+        margin: 0 auto;
+        background: yellowgreen;
+    }
+    .banner{
+        width: 100%;
+        height:500px;
+        background: #aef8ff;
+    }
+    .louceng{
+        width:1200px;
+        height: 650px;
+        background: #86a4cc;
+        margin: 0 auto;
+        margin-top:30px;
+    }
+    .loudao{
+        width: 50px;
+        height: 250px;
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+    }
+    .loudao ul{
+        width:100%;
+        height:100%;
+        border: 1px solid #ccc;
+    }
+    .loudao ul:last-child{
+        border-bottom: 0;
+    }
+    .loudao ul li{
+        width: 100%;
+        height:50px;
+        border-bottom:1px solid #ccc ;
+        text-align: center;
+        line-height: 50px;
+        font-size: 12px;
+    }
+    .active{
+        background: red;
+        color: white;
+    }
+    .footer{
+        width: 100%;
+        height: 0;
+        background: lightgrey;
+        position: fixed;
+        left: 0;
+        top: 0;
+        display: none;
+    }
+    .block{
+        display: block;
+        height: 50px;
+    }
+</style>
+<body>
+<header class="header"></header>
+<nav class="daohang"></nav>
+<div class="banner"></div>
+<div class="louceng">1</div>
+<div class="louceng">2</div>
+<div class="louceng">3</div>
+<div class="louceng">4</div>
+<div class="louceng">5</div>
+<div class="loudao">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+<div class="footer">
+
+</div>
+</body>
+<script>
+    window.onload=function () {
+		let louceng=document.querySelectorAll(".louceng");
+		let loudao=document.querySelector(".loudao");
+		let loudao1=document.querySelector(".loudao>ul");
+		let loudaoli=document.querySelectorAll(".loudao>ul>li");
+		console.log(louceng);
+		let footer=document.querySelector(".footer")
+        window.onscroll=function () {
+           louceng.forEach(function (value,index) {
+           	let scroll=document.body.scrollTop? document.body.scrollTop:document.documentElement.scrollTop;
+           	let oh=value.offsetTop;
+            if (scroll>=oh-500){
+
+                louceng.forEach(function (a,b) {
+					loudaoli[b].classList.remove("active");
+				})
+				loudaoli[index].classList.add("active");
+//				footer.classList.add("block");
+            }
+
+
+		   })
+
+
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+    }
+</script>
+</html>

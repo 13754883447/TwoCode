@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="animate.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    .box{
+        width: 1200px;
+        height:535px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .boxul{
+        width:100%;
+        height:100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    .boxul li{
+        width: 100%;
+        height:535px;
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+    .boxul li.active{
+        left: 0;
+    }
+    .lunbo{
+        width:100px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 5px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .lunbo li{
+        width:20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: deepskyblue;
+    }
+    .lunbo li.xuanzhong{
+        background: white;
+    }
+    .left{
+        width: 40px;
+        height: 40px;
+        font-size: 42px;
+        line-height: 38px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom:0;
+        margin: auto;
+        color: #b5b5b5;
+        cursor: pointer;
+        background-color: #000;
+        opacity: 0;
+        transition: opacity .5s;
+
+    }
+    .left:hover,.right:hover{
+        opacity: 1;
+    }
+    .right{
+        width: 40px;
+        height: 40px;
+        font-size: 42px;
+        line-height: 38px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom:0;
+        margin: auto;
+        color: #b5b5b5;
+        text-align: center;
+        cursor: pointer;
+        color: #b5b5b5;
+        cursor: pointer;
+        background-color: #000;
+        opacity: 0;
+        transition: opacity .5s;
+    }
+</style>
+<body>
+<div class="box">
+    <ul class="boxul">
+        <li class="active"><img src="618hdsj.jpg" alt=""></li>
+        <li><img src="sj.jpg" alt=""></li>
+        <li><img src="sjxbx.jpg" alt=""></li>
+        <li><img src="srm.jpg" alt=""></li>
+    </ul>
+    <ul class="lunbo">
+        <li class="xuanzhong"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="right">&gt;</div>
+    <div class="left">&lt;</div>
+</div>
+</body>
+<script>
+    //获取
+    let boxulli=document.querySelectorAll(".boxul>li");
+    let box=document.querySelector(".box");
+    let boxul=document.querySelector(".boxul");
+    let width = parseInt(getComputedStyle(box, null).width);
+    let right=document.querySelector(".right");
+	let left=document.querySelector(".left");
+	let lunbodian=document.querySelectorAll(".lunbo>li");
+
+    //开关
+    let flag=true;
+    //当前
+    let index=0;
+    //下一个
+    let next=0;
+    //时间函数
+    let t=setInterval(move,2000);
+
+	function move(way="r") {
+		//当前图片让下一张在后面等着  往左走，右面有一个等着
+    	if (flag){
+    		flag=false;
+    		if (way=="r"){
+				next=index+1;
+				if (next>=boxulli.length){
+					next=0;
+				}
+				//始终让一个在右面等着
+				boxulli[next].style.left="100%";
+				animate(boxulli[index], {left: -width},500);
+				animate(boxulli[next], {left: 0},500,function () {
+                    flag=true;
+				});
+			}else if(way=="l"){
+    			//上面相反
+				next=index-1;
+				if (next<0){
+					next=boxulli.length-1;
+				}
+				boxulli[next].style.left="-100%";
+				animate(boxulli[index], {left: width},500);
+				animate(boxulli[next], {left: 0},500,function () {
+                    flag=true;
+				});
+			}
+			//下标 轮播点和图片盒子 相通
+			lunbodian[index].classList.remove("xuanzhong");
+			lunbodian[next].classList.add("xuanzhong");
+			index=next;
+		}
+
+//鼠标移入 停止时间函数
+		box.onmouseover=function () {
+			clearInterval(t);
+		}
+		//移出 重新开始
+		box.onmouseout=function () {
+			t=setInterval(move,2000);
+		}
+//点右箭头 多运行一次
+		right.onclick=function () {
+			move();
+		}
+
+//点左箭头 相反方向运行一次
+		left.onclick=function () {
+			move("l");
+		}
+
+
+		//点轮播点 对应相对应的图片盒子  使之出现
+        lunbodian.forEach(function (value,n) {
+            value.onclick=function () {
+            	//如果点击大于当前  运行right
+                if (n>index){
+					boxulli[n].style.left="100%";
+					animate(boxulli[index], {left: -width});
+					animate(boxulli[n], {left: 0},function () {
+						flag=true;
+					});
+					//如果点击小于当前，运行Left
+                }else if(n<index){
+					boxulli[n].style.left="-100%";
+					animate(boxulli[index], {left: width});
+					animate(boxulli[n], {left: 0},function () {
+						flag=true;
+					});
+					//如果点击等于当前，不执行任何事件
+                }else if(n==index){
+                	return;
+                }
+                //轮播与图片盒子相通
+				lunbodian[index].classList.remove("xuanzhong");
+				lunbodian[n].classList.add("xuanzhong");
+				//点击完之后，同步index
+                index=n;
+			}
+		})
+	}
+</script>
+</html>

@@ -1,0 +1,158 @@
+body{
+    background:#F2F2F2 ;
+}
+.top {
+    width: 100%;
+    height: 400px;
+    background: url("../img/top.jpg") top center;
+    background-size: cover;
+    position: relative;
+}
+.top-zi-s {
+    font-size: 80px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    bottom: 200px;
+    color: white;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.top-zi-x {
+    font-size: 40px;
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+.top-zi-s a{
+    color: white;
+}
+.top-zi-s a:hover{
+    text-decoration: underline;
+}
+
+.top-logo {
+    width: 80px;
+    height: 70px;
+    background-image: url("../img/logo.png");
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: -35px;
+}
+
+.box>div{
+    padding: 10px 10px;
+}
+.box1{
+    border: 10px solid white;
+    background: white;
+}
+.box-smal{
+    width: 100%;
+    padding-top: 66%;
+    position: relative;
+}
+.box-smal img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.box-zi{
+    width:100%;
+    font-size: 24px;
+    line-height: 45px;
+    text-align: center;
+    color: #ccc;
+}
+.fenye{
+    width: 100%;
+    height: 70px;
+    font-size: 13px;
+    line-height: 50px;
+    text-align: center;
+    color: #000;
+    float: left;
+}
+.fenye-right{
+    width: 100px;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    float: right;
+}
+.fenye-right:hover{
+    color: white;
+    background-color: #000 ;
+}
+.bottom{
+    width: 100%;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    float: left;
+    background: #eee;
+    padding: 20px;
+}
+.bottom a{
+     color: blue;
+ }
+.bottom a:hover{
+    color: #006699;
+    text-decoration: underline #006699;
+}
+.bottom-span{
+    color: #000;
+    font-weight: bold;
+}
+footer{
+    width: 100%;
+    background: #202020;
+    float: left;
+}
+.dibu>div{
+    padding: 20px;
+    line-height: 50px;
+}
+.dibu1{
+    border-bottom: 1px solid #303030;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.dibu2{
+    border-bottom: 1px dashed #303030;
+    font-size: 16px;
+    color: #959595;
+    margin-bottom: 10px;
+}
+.dibu3{
+    height: 30px;
+    border: 1px solid #303030;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+    color: #959595 ;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 0 5px;
+}
+.tab{
+    width: 100%;
+    background: #000;
+    font-size: 13px;
+    text-align: center;
+    color: #555;
+    float: left;
+    line-height: 50px;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" class="zhanghao">账号
+<input type="text" class="mima">密码
+<input type="text" class="dianhua">电话
+<input type="text" class="youxiang">邮箱
+</body>
+<script>
+    window.onload=function () {
+
+//    	test exec
+
+//    	let reg=/abc/g;
+//    	let dd="abc1abc"
+//        let result;
+//    	let result2=reg.test(dd);
+//    	console.log(2);
+//    	do {
+//    		result=reg.exec(dd);
+//    		if (result){
+//				console.log(result);
+//            }
+//
+//        }while(result)
+
+
+
+
+
+
+//        原子
+//        let a=/\?/;
+//        let b="sb?";
+//        let result=a.exec(b);
+//        console.log(result);
+//
+//		let aa=/\D/;
+//		let bb="113241659a";
+//		let result1=aa.exec(bb);
+//		console.log(result1);
+//
+//		let aaa=/\d\w/;//一个原子只能匹配一个字符
+//
+//		let bbb="113241659a";
+//		let result2=aaa.exec(bbb);
+//		console.log(result2);
+//
+//        let v=/[^0-9,a-z]/;
+//        let cv="svg";
+//        console.log(v.exec(cv));
+//
+//
+//
+//
+//		let vv=/[a|d]/;
+//		let vvv="svg";
+//		console.log(vv.exec(vvv));
+
+
+//        let reg=/\w(a|b)(1|7)\w\1\2/;
+//        let str="1a1qa1";
+//        let re=reg.exec(str);
+//        console.log(re);
+//
+//        let re=/\w{2,9}?b/;
+//        let str="688971261b";
+//        let r=re.exec(str);
+//        console.log(r);
+
+//		let re=/b\w+?/;//吝啬
+//		let str="b688971261";
+//		let r=re.exec(str);
+//		console.log(r);
+
+//		let re=/b\w+/;//贪婪
+//		let str="b688971261";
+//		let r=re.exec(str);
+//		console.log(r);
+
+//        let re=/\d?/;
+//        let str="123";
+//        let b=re.exec(str);
+//        console.log(b);
+//
+//
+//        账号6-20 数字字母不能有特殊字符
+//        密码 6-10 可以以数字字母下划线.？-组成
+//        电话 11  134 133 130 15
+//        邮箱 6-10 @.qq  126  gmail outlook sina  163
+            let zha="a45645649878";
+			let zhanghao=/^[a-zA-Z1-9]{6,20}$/;
+			let jie=zhanghao.exec(zha);
+            console.log(jie);
+
+
+            let mima="5-6d.?456";
+            let mm=/^[\w\.\?\-]{6,10}$/;
+
+            console.log(mm.test(mima));
+
+
+            let reg=/^[3578]\d{9}$/;
+
+            let reg1=/^[0-9a-zA-Z]{6,10}@(162|qq|126|gmail|outlook|sina)\.com$/;
+
+	}
+
+
+
+</script>
+</html>

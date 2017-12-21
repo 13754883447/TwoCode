@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="animate.js"></script>
+</head>
+<style>
+    .box{
+        width: 200px;
+        height:200px;
+        background: red;
+    }
+</style>
+<body>
+<div class="box">
+</div>
+</body>
+<script>
+    window.onload=function () {
+    	let box=document.querySelector(".box");
+    	animate(box,{width:400,height:500},1000,Tween.Linear);
+    }
+</script>
+</html>

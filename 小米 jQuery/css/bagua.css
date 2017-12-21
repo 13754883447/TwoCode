@@ -1,0 +1,44 @@
+.box{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background: #fff;
+	border-bottom: 100px solid black;
+	margin: 0 auto;
+	position: relative;
+	transition: all .5s linear;
+}
+body{
+	background: #360;
+}
+.box:before{
+		content: "";
+		display: block;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background-color: #fff;
+		position: absolute;
+		left: 0;
+		top: 100px;
+		bottom: 0;
+		margin: auto ;
+		border: 35px solid #000;
+}
+.box:after{
+	content: "";
+	display:block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #000;
+	position: absolute;
+	right: 0;
+	top: 100px;
+	bottom: 0;
+	margin: auto;
+	border: 35px solid #fff;
+}
+.box:hover{
+	transform: rotate(720deg);
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .div{
+        width:200px;
+        height:200px;
+        background: #330033;
+        margin: 0 auto;
+        margin-top: 200px;
+    }
+</style>
+<body>
+    <div class="div">
+
+    </div>
+</body>
+<script>
+    window.onload=function () {
+		let div=document.querySelector("div");  //获取
+		let speed=10;    //增大多少
+
+		let t=window.setInterval(move,200);  //设置时间函数
+		function move() {     //函数运行执行的条件
+			let width=parseInt(getComputedStyle(div,null).width); //获取长
+			let height=parseInt(getComputedStyle(div,null).height); //获取宽
+
+				let newwidth=width+speed;
+				let newheight=height+speed;
+				div.style.width=newwidth+"px";
+				div.style.height=newheight+"px";
+
+
+
+			if (newwidth>=400,newheight>=400){
+				newwidth=400;
+				 speed*=-1;
+            }
+            if(newwidth<=200,newheight<=200){
+				newwidth=200;
+				speed*=-1;
+            }
+		}
+        div.onmouseover=function () {
+			clearInterval(t); //当鼠标移入 清除时间函数
+		}
+		div.onmouseout=function () {
+             t=window.setInterval(move,200); //移出 继续执行  但是加上声明会变快  因为变成了局部
+		}
+		div.onclick=function () {
+            alert("吔屎啦你");
+		}
+	}
+
+
+</script>
+</html>

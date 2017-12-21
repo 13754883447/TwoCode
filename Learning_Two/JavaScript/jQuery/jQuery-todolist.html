@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+    <script src="../jquery.min.js"></script>
+</head>
+<style>
+    body{
+        background-color:#ccc ;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .header{
+        width:100%;
+        height: 50px;
+        background: #000;
+    }
+    .headerbox{
+        width: 1200px;
+        height:100%;
+        margin: 0 auto;
+    }
+    .logo{
+        width: 35%;
+        height:100%;
+        text-align: right;
+        font-size: 28px;
+        color: white;
+        line-height: 50px;
+        float: left;
+    }
+    .shuru{
+        width: 65%;
+        height:100%;
+        float: left;
+        padding: 10px 0 0 100px;
+    }
+    .input{
+        width: 300px;
+        height:26px;
+        border-radius: 10px;
+        padding-left: 10px;
+    }
+    section{
+        width:600px;
+        margin: 0 auto;
+        margin-top: 10px;
+        padding-right: 100px;
+    }
+    section>div{
+        margin: 10px 0px;
+    }
+    h2{
+        font-size: 28px;
+    }
+    h2>span{
+        width: 34px;
+        height:34px;
+        border-radius: 50%;
+        background-color: white;
+        float: right;
+        font-size: 20px;
+        text-align: center;
+        line-height: 34px;
+    }
+    .ul{
+        width:100%;
+        background-color: red;
+        position: relative;
+    }
+    .ul li{
+        height: 32px;
+        line-height: 32px;
+        background: #fff;
+        position: relative;
+        margin-bottom: 10px;
+        padding: 0 45px;
+        border-radius: 3px;
+        border-left: 5px solid #629A9C;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    }
+    .ul li input{
+        position: absolute;
+        top: 4px;
+        left: 10px;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+    .ul li p{
+        width: 80%;
+        height: 100%;
+        line-height: 32px;
+        position: absolute;
+        left: 40px;
+    }
+    .ul li a{
+        position: absolute;
+        top: 8px;
+        right: 5px;
+        display: inline-block;
+        width: 14px;
+        height: 12px;
+        border-radius: 14px;
+        border: 6px double #FFF;
+        background: #CCC;
+        line-height: 14px;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .ul1{
+        width:100%;
+        background-color: #0000FF;
+        position: relative;
+    }
+    .ul1 li{
+        height: 32px;
+        line-height: 32px;
+        background: #fff;
+        position: relative;
+        margin-bottom: 10px;
+        padding: 0 45px;
+        border-radius: 3px;
+        border-left: 5px solid #629A9C;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    }
+    .ul1 li input{
+        position: absolute;
+        top: 4px;
+        left: 10px;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+    .ul1 li p{
+        width: 80%;
+        height: 100%;
+        line-height: 32px;
+        position: absolute;
+        left: 40px;
+    }
+    .ul1 li a{
+        position: absolute;
+        top: 8px;
+        right: 5px;
+        display: inline-block;
+        width: 14px;
+        height: 12px;
+        border-radius: 14px;
+        border: 6px double #FFF;
+        background: #CCC;
+        line-height: 14px;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+    }
+</style>
+<body>
+<header class="header">
+    <div class="headerbox">
+        <div class="logo">ToDoList</div>
+        <div class="shuru">
+            <input type="text" placeholder="添加ToDo" class="input">
+        </div>
+    </div>
+</header>
+<section>
+        <h2>正在进行 <span id="jishu">0</span></h2>
+            <ul class="ul">
+                <!--<li>-->
+                    <!--<input type="checkbox">-->
+                    <!--<p>45464646</p>-->
+                    <!--<a href=""></a>-->
+                <!--</li>-->
+            </ul>
+        <h2>已经完成 <span id="jishu1">0</span></h2>
+        <ul class="ul1">
+        <!--<li>-->
+            <!--<input type="checkbox">-->
+            <!--<p>45464646</p>-->
+            <!--<a href=""></a>-->
+        <!--</li>-->
+        </ul>
+</section>
+</body>
+<script>
+    $(function () {
+//		let arr=[
+//        {id:1499848865300,context:'吃饭',status:false},
+//        {id:1499848876195,context:'学习',status:true},
+//        {id:1499848894042,context:'吃屎',status:true}
+//    ];
+//    localStorage.todolist = JSON.stringify(arr)
+
+//			let database=[];//创建一个数据库
+//    	localStorage.todolist=JSON.stringify(database);//这个数据库的数据用JSON保存
+    	init();
+    	function init() {
+    		var m=0,n=0;
+			$(".ul,.ul1").html("");
+            database=JSON.parse(localStorage.todolist);
+            database.forEach(function (value,index) {
+                let type=value.status?"checked":"";
+                let li=$("<li id="+value.id+">");
+                let par;
+                if(type){
+                	par=$(".ul1");
+                    n++;
+                    $("#jishu1").html(n);//已完成计数
+                }else{
+					par=$(".ul");
+					m++;
+					$("#jishu").html(m);//正在进行计数
+                }
+                //li的内容
+                li.html(`
+                 <input type="checkbox"${type})>
+                 <p contenteditable="true">${value.context}</p>
+                 <a href=""></a>
+                `);
+                li.appendTo(par);//把li拆入到par中
+                //如果 ol
+				if($('.ul').children().length==0){
+					$('#jishu').html(0);
+				}else if($('.ul1').children().length==0){
+					$('#jishu1').html(0);
+				}
+			})
+		}
+		//输入
+    	$(document).keydown(function (e) {//键盘按下
+			let val=$(".input").val();//获取input的值
+            if(e.which==13&&val){//文本框里有东西并且回车按下
+				if(val){
+					var b = {id:Date.now(),context:val,status:false};//id 是时间戳,内容是值
+					var li = $('<li id='+b.id+'>');//创建一个li
+                    //li的内容
+					li.html(`
+                    <input type="checkbox">
+                    <p contenteditable="true">${b.context}</p>
+                    <a></a>
+                `);
+					li.appendTo($('.ul'));//追加到ul后面
+					database.push(b);//数据库也加
+					localStorage.todolist=JSON.stringify(database);//更新数据库
+					$('header input').val("");//清空input的值
+					init();
+				}else{
+					alert('请输入正确');
+				}
+            }
+		})
+//事件委派
+    $("section").delegate("a","click",function (e) {//delegate时间委派专用！
+       let id=$(this).parent().attr("id");
+       //在数据库中查找该id
+		let index = database.findIndex(function (value) {
+			return value.id==id;
+		})
+        //删除该id 并且更新数据库
+		database.splice(index,1);
+		localStorage.todolist=JSON.stringify(database);
+		init();
+	})
+        //换位置
+		$('section').on('click','input[type=checkbox]',function () {
+			var jj=$(this).attr("checked");
+			var id = $(this).parent().attr("id");
+			var index = database.findIndex(function (value) {//查找ID的位置
+				return value.id==id;
+			})
+			if(jj){//切换  有问题
+				database[index].status=false;
+			}else{
+				database[index].status=true;
+			}
+			localStorage.todolist=JSON.stringify(database);
+			init();
+		})
+        //更改内容
+		$('section').on('blur','p',function () {//失去焦点
+			var id = $(this).parent().attr('id');
+			var index = database.findIndex(function (value) {//找下标
+				return value.id==id;
+			});
+			var val = $(this).text();//内容是它的文本
+			database[index].context=val;//数据库的位置替换
+			localStorage.todolist=JSON.stringify(database);//更新数据库
+			init();
+		})
+		})
+</script>
+</html>

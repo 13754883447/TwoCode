@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .box{
+        width:1200px;
+        height:auto;
+        background-color: #ccffcc;
+        box-shadow: 0px 2px 2px 2px #ccffcc;
+        margin: auto;
+    }
+    .biaoti{
+        font-size: 40px;
+        line-height: 60px;
+        text-align: center;
+        border-bottom: 1px solid #33fffc;
+    }
+    .box>table{
+        width:100%;
+        height:auto;
+        text-align: center;
+    }
+    table tr{
+        width:100%;
+        height:40px;
+    }
+    table tr td{
+        width:20%;
+        height:100%;
+    }
+    table tr th{
+        width:20%;
+        height:100%;
+    }
+    button{
+        width:50px;
+        height: 50px;
+        position: fixed;
+        right: 20px;
+        top: 50px;
+        border-radius: 10px;
+        background-color: #ccffcc;
+        border: 0;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="biaoti">学籍卡</div>
+    <table>
+        <tr>
+            <th>学号</th>
+            <th>班级</th>
+            <th>成绩</th>
+            <th>性别</th>
+            <th>功能键</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>张三</td>
+            <td>20</td>
+            <td>男</td>
+            <td>
+                <div class="del">删除</div>
+            </td>
+        </tr>
+    </table>
+    <button>添加</button>
+</div>
+</body>
+</html>
+<script>
+    window.onload=function () {
+    	let tbody=document.querySelector("tbody");
+    	let button=document.querySelector("button");//获取
+    	button.onclick=function () {//点击按钮之后
+            let tr=document.createElement("tr");//创建一个tr
+            //tr的内容 用模板字符串 包起来，要不会报错
+            tr.innerHTML=`
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <div class="del">删除</div>
+            </td>`;
+            tbody.appendChild(tr);//在tbody后面追加一个tr
+		}
+		tbody.onclick=function (e) {//事件委派,e值用户发生的时间
+            let mubiao=e.target||e.srcElement;//获取目标事件源
+            if(mubiao.className=="del"){//如果目标事件源所属的类名是del
+            	tbody.removeChild(mubiao.parentNode.parentNode);//那么删除目标事件源的父节点的父节点,也就是tr;一整行
+            }else if(mubiao.nodeName=="TD"&&mubiao.children.length==0){//如果目标事件源的节点名字是TD并且没有子元素.
+            	let input=document.createElement("input"); //创建一个input
+            	input.type="text";//input的类型是type；
+            	let neirong=mubiao.innerHTML;//声明一个变量，也就是保存以前的内容
+            	mubiao.innerHTML="";//然后把目标事件源在页面中的内容变成"";
+            	input.value=neirong;
+            	mubiao.appendChild(input);
+            	input.focus();
+            	input.onblur=function () {
+                    let value=input.value;
+                    mubiao.innerHTML=value;
+				}
+            }
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        let box=document.querySelector(".box");
+//        let tbody=document.querySelector("tbody");
+//        let button=document.querySelector("button");
+//
+//        button.onclick=function () {
+//            let tr=document.createElement("tr");
+//            tr.innerHTML=`<tr>
+//            <td></td>
+//            <td></td>
+//            <td></td>
+//            <td></td>
+//            <td>
+//                <div class="del">删除</div>
+//            </td>
+//        </tr>`;
+//            tbody.appendChild(tr);
+//		}
+//
+//
+//	tbody.onclick=function (e) {//事件委派
+//        let ev=e.target||e.srcElement;//获取目标事件源
+//        if(ev.className=="del"){
+//        	tbody.removeChild(ev.parentNode.parentNode);
+//        }else if(ev.nodeName=="TD"&&ev.children.length==0){
+//        	let input=document.createElement("input");
+//        	 let vv=input.innerHTML;
+//        	 ev.innerHTML="";
+//        	 ev.value=vv;
+//        	 ev.appendChild(input);
+//        	 input.focus();
+//        	 input.onblur=function(){
+//        	 	let value=input.value;
+//        	 	ev.innerHTML=value;
+//             }
+//        }
+//	}
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+</script>

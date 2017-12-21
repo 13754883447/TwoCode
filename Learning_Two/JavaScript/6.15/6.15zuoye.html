@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    window.onload=function () {
+        mysome=function (callback) {
+
+        }
+        let flag=true;
+        for(let i=0;i<this.length;i++){
+            if(!callback(this[i],i)){
+                flag=false;
+            }
+            return flag;
+        }
+    }
+
+    window.onload=function () {
+        myevery=function (callback) {
+
+        }
+        let flag=true;
+        for(let i=0;i<this.length;i++){
+            if(!callback(this[i],i)){
+                flag=false;
+            }
+            return flag;
+        }
+    }
+
+
+
+    window.onload=function () {
+        mysort=function (callback) {
+
+        }
+        let flag=[];
+        for(let i=0;i<this.length;i++){
+            if(callback(this[i]>flag[0])){
+                flag.push(this[i]);
+            }
+            return flag;
+        }
+    }
+
+
+
+window.onload=function () {
+    myconcat=function (arr) {
+        let brr = [];
+        for (let i = 0; i < this.length; i++) {
+            brr.push(this[i]);
+        }
+        for (let j = 0; j < arr.length; j++) {
+            brr.push(arr[j])
+        }
+        return brr;
+    }
+
+}
+window.onload=function () {
+    myfilter=function (fun) {
+        let arr = [];
+        for (let i = 0; i < this.length; i++) {
+            if (fun(this[i],i)) {
+                arr.push(this[i])
+            }
+        }
+        return arr;
+    }
+}
+
+
+
+   window.onload=function () {
+        myincludes=function (callback) {
+
+        }
+        let flag=true;
+        for(let i=0;i<this.length;i++){
+            if(this[i].includes(flag)){
+                return true;
+                break;
+            }
+        }
+    }
+
+
+
+    window.onload=function () {
+        myfind=function (fun) {
+            let m;
+            for (let i = 0; i < this.length; i++) {
+                if (fun(this[i])) {
+                    m = this[i];
+                    break;
+                }
+            }
+            return m;
+        }
+    }
+
+
+window.onload=function () {
+    myfindIndex=function (fun) {
+        let m;
+        for (let i = 0; i < this.length; i++) {
+            if (fun(this[i])) {
+                m = i;
+                break;
+            }
+        }
+        return m;
+    }
+}
+
+//window.onload=function () {
+    myjoin=function (m) {
+        let str = "";
+        for (let i = 0; i < this.length; i++) {
+            str = this[i] + m;
+        }
+        return str.substr(0, str.length - 1);
+    }
+//}
+
+    
+    
+    window.onload=function () {
+        myreverse=function () {
+            let brr = [];
+            for (let i = this.length - 1; i >= 0; i--) {
+                brr.push(this[i]);
+            }
+            return brr;
+        }
+    }
+</script>
+</html>

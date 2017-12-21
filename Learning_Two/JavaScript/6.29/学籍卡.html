@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../6.28/$.js"></script>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .box{
+        width:1200px;
+        height:auto;
+        background-color: #ccffcc;
+        box-shadow: 0px 2px 2px 2px #ccffcc;
+        margin: auto;
+    }
+    .biaoti{
+        font-size: 40px;
+        line-height: 60px;
+        text-align: center;
+        border-bottom: 1px solid #33fffc;
+    }
+    .box>table{
+        width:100%;
+        height:auto;
+        text-align: center;
+    }
+    table tr{
+        width:100%;
+        height:40px;
+    }
+    table tr td{
+        width:20%;
+        height:100%;
+    }
+    table tr th{
+        width:20%;
+        height:100%;
+    }
+    button{
+        width:50px;
+        height: 50px;
+        position: fixed;
+        right: 20px;
+        top: 50px;
+        border-radius: 10px;
+        background-color: #ccffcc;
+        border: 0;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="biaoti">学籍卡</div>
+    <table>
+        <tr>
+            <th>学号</th>
+            <th>班级</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>功能键</th>
+        </tr>
+        <!--<tr>-->
+            <!--<td>1</td>-->
+            <!--<td>张三</td>-->
+            <!--<td>20</td>-->
+            <!--<td>男</td>-->
+            <!--<td>-->
+                <!--<div class="del">删除</div>-->
+            <!--</td>-->
+        <!--</tr>-->
+    </table>
+    <button>添加</button>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+    	//创建本地存储的信息(数据库)
+//    	let database=[{id:"1",nub:1,name:"wang",age:"12",sex:"女"},{id:"2",nub:2,name:"wang",age:"12",sex:"女"},{id:"3",nub:3,name:"wang",age:"12",sex:"女"}];
+//    	let obj={id:3};
+//    	localStorage.database=JSON.stringify(database);///声明值 JSON格式保存不会成为Object名字的字符串
+//    	localStorage.index=JSON.stringify(obj);///声明下标 也就是ID
+    	let database=[],index=0; //创建一个新数组和下标(id)
+    	if(localStorage.database){
+			database=JSON.parse(localStorage.database);//转换回来
+			index=JSON.parse(localStorage.index).id;//转换回来
+        }
+        //声明变量
+        let tbody=$("tbody");
+        let button=$("button");
+        //值遍历
+        database.forEach(function (value) {
+            let tr=$("<tr>");//创建一个tr
+            tr.id=value.id;//tr的id等同于数据库的id
+            tr.innerHTML= `
+              <td class="nub">${value.nub}</td>
+          <td class="name">${value.name}</td>
+           <td class="age">${value.age}</td>
+           <td class="sex">${value.sex}</td>
+           <td>
+                <div class="del">删除</div>
+            </td>
+            `;//tr的内容
+            tbody.append(tr);//在tbody后面追加一个tr
+		})
+        //点击按钮增加
+        button.onclick=function () {//点击按钮之后
+        	index++;//id值自增  下标++
+        	let obj={id:"",nub:"",name:"",age:"",sex:""};//对象//更新数据库，创建空对象，也就是一行数据
+            let tr=$("<tr>");//创建一个tr
+            //添加文档结构,每个td代表个模块
+        	tr.innerHTML=`
+            <td class="num"></td>
+            <td class="name"></td>
+
+            <td class="age"></td>
+            <td class="sex"></td>
+            <td>
+                <div class="del">删除</div>
+            </td>`;
+        	tbody.append(tr);//追加一个TR到页面
+        	database.push(obj);//数据库后面追加一个obj 同步
+        	obj.id=index;//id值=数据库的id
+
+            //更新本地存储数据库数据,更新下标
+			localStorage.database=JSON.stringify(database);//数据库和页面当前互通
+    	    localStorage.index=JSON.stringify({id:index});//数据库id和页面tr的id互通
+		}
+    tbody.onclick=function (e) {//事件委派
+		let dj = e.target || e.srcElement;//获取事件源
+		if (dj.className == "del") {//如果事件源的类名是del
+			let fujiedian = dj.parentNode.parentNode;//要删除的父节点
+			let parentid = fujiedian.id;//把父节点的id用一个容器放进去
+			let delid = database.findIndex(function (value) {//在数据库中查找是要删除id的下标
+				return value.id == parentid;
+			});
+			database.splice(delid, 1);//从要删除的下标删除1个
+			tbody.removeChild(fujiedian);//页面中删除的父节点
+			localStorage.database = JSON.stringify(database);//数据库和页面互通内容
+			localStorage.index = JSON.stringify({id: index});//数据库和页面互通id
+		} else if (dj.nodeName == "TD" && dj.children.length == 0) {//如果事件源的节点名字是td并且没有子元素
+			let input = document.createElement("input"); //创建一个input
+            let parentid=dj.parentNode.id;//获取事件源父节点的id
+            let classname=dj.className;//获取事件源的类名
+			input.type = "text";//input的类型是type；
+			let neirong = dj.innerHTML;//声明一个变量，也就是保存以前的内容
+			dj.innerHTML = "";//然后把目标事件源在页面中的内容变成"";
+			input.value = neirong;//把input的值转换成页面中的值
+			dj.appendChild(input);//在事件源后面追加一个input
+			input.focus();//点击的时候自动获取焦点
+			input.onblur = function () {//当创建的input失去焦点的时候
+				let value = input.value;//把Input的内容用一个容器保存起来
+				dj.innerHTML = value;//事件源的内容=保存起来的内容
+				let UPdateid=database.findIndex(function (value) {
+                    return value.id==parentid;//把内容在数据库中查找,获取相通内容的id
+				})
+                database[UPdateid][classname]=value;//把数据库中的内容相同于页面中的内容
+				localStorage.database = JSON.stringify(database);//页面和数据库相通
+			}
+		}
+	}
+
+
+
+
+
+
+	})
+</script>

@@ -1,0 +1,101 @@
+.nav{
+	width: 1080px;
+	height: 168px;
+	background: #00a5c4;
+}
+.jisuanqi{
+	font-size: 50px;
+	color: #fff;
+	line-height: 168px;
+	/* 设置文本垂直居中 */
+	margin-left: 50px; 
+	/* 调整元素间的距离 */
+	float: left;
+	/* 改变元素的排列顺序,从左到右 */
+}
+.more{
+	width: 13px;
+	height: 53px;
+	background: red;
+	float: right;
+	margin-right: 66px;
+	margin-top: 57px;
+}
+.view{
+	width: 1080px;
+	height: 561px;
+	background: #f0f0f0;
+
+}
+.guangbiao{
+	width: 4px;
+	height: 165px;
+	background: #27A7C5;
+	float: right;
+	margin-right: 33px;
+	margin-top: 18px;
+}
+.history{
+	width: 1080px;
+	height: 102px;
+	background: #dfe3e4;
+	
+	font-size: 30px;
+	color: #505A5D;
+	font-weight: bold;
+	/* 调整字体粗细 */
+	line-height: 102px;
+	text-align: center;
+	/* 文本水平居中 */
+}
+.keybord{
+	width: 1080px;
+	height: 1089px;
+	background: #dfe3e4;
+}
+.anniu{
+	height: 214px;
+	background: #fafafa;
+	float:left;
+	margin-left: 6px;
+	margin-bottom: 6px;
+}
+.anniux{
+    height: 214px;
+    background: #f2f4f4;
+    float:left;
+    margin-left: 6px;
+    margin-bottom: 6px;
+}
+.anniu1{
+	width: 265px;
+}
+.anniu2{
+	width: 266px;
+}
+.anniu3{
+	margin-left: 0px;
+}
+.anniu4{
+	height:209px; 
+	margin-bottom: 0px;
+}
+.text1{
+	font-size: 80px;
+	color: #4e95d7;
+	text-align: center;
+    line-height: 214px;
+}
+.text2{
+	font-size: 100px;
+	color: #32626b;
+	text-align: center;
+    line-height: 214px;
+
+}
+.text3{
+    font-size: 100px;
+    color: #4bae50;
+    text-align: center;
+    line-height: 214px;
+}

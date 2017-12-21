@@ -1,0 +1,329 @@
+*{
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+}
+.header{
+    width:100%;
+    height:60px;
+    margin: 0 auto;
+    background: #09eea1;
+    color: white;
+    font-size: 36px;
+    line-height: 60px;
+    text-align: center;
+}
+.section{
+    width:1200px;
+    height:580px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.section ul{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.section ul li{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.section ul li.active{
+    opacity: 1;
+}
+.section ul li img{
+    width:100%;
+    height:100%;
+}
+.footer{
+    width:100%;
+    height:80px;
+    background: #0ed6fa;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.footerbox{
+    width:1200px;
+    height:100%;
+    margin: 0 auto;
+    position: relative;
+}
+.touxiang{
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    left:0;
+    top: 5px;
+}
+.touxiang>ul{
+    width: 100%;
+    height:100%;
+    position: relative;
+}
+.touxiang>ul>li{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.touxiang>ul>li.abc{
+    display:block;
+}
+.touxiang img{
+    width:100%;
+    height:100%;
+}
+.geming{
+    width:150px;
+    height: 40px;
+    position: absolute;
+    left:100px;
+    top: 2px;
+    font-size: 16px;
+    text-align: left;
+    line-height: 40px;
+    font-weight: bold;
+}
+.geming>ul{
+    width: 100%;
+    height:100%;
+    position: relative;
+}
+.geming>ul>li{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.geming>ul>li.Gm{
+    display: block;
+}
+.geshou{
+    width:150px;
+    height: 30px;
+    position: absolute;
+    left:100px;
+    bottom: 2px;
+    line-height: 30px;
+    text-align: left;
+}
+.geshou>ul{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.geshou>ul>li{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top:0;
+    display: none;
+}
+.geshou>ul>li.Gs{
+    display: block;
+}
+.kongzhi{
+    /*width: 160px;*/
+    height:32px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.houtui{
+    width:32px;
+    height:32px;
+    border: 1px solid #000000;
+    line-height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    float: left;
+    font-size: 28px !important;
+    transition: all .5s;
+    cursor: pointer;
+}
+.zhanting{
+    width:32px;
+    height:32px;
+    border: 1px solid #000000;
+    line-height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    float: left;
+    font-size: 28px !important;
+    margin-left: 30px;
+    transition: all .5s;
+    cursor: pointer;
+    display: none;
+}
+.qianjing{
+    width:32px;
+    height:32px;
+    border: 1px solid #000000;
+    line-height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    float: left;
+    font-size: 28px !important;
+    margin-left: 30px;
+    transition: all .5s;
+    cursor: pointer;
+}
+.start{
+    width:32px;
+    height:32px;
+    border: 1px solid #000000;
+    line-height: 26px;
+    border-radius: 50%;
+    padding: 0 3px;
+    /*text-align: center;*/
+    float: left;
+    font-size: 28px !important;
+    margin-left: 30px;
+    transition: all .5s;
+    cursor: pointer;
+}
+.kongzhi>div:hover{
+    color: white;
+    background: red;
+}
+.bofangtiao{
+    width:500px;
+    height:4px;
+    border-radius: 10px;
+    background: #c2ccd1;
+    position: absolute;
+    top: 50px;
+    left: 300px;
+}
+.shijian{
+    width: 1px;
+    border-radius: 10px;
+    height:100%;
+    background: greenyellow;
+}
+.love{
+    width:40px;
+    height:40px;
+    position: absolute;
+    right: 170px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 28px !important;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.yinliangbox{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 300px;
+    top:15px;
+}
+.yinliangbox1{
+    width: 60px;
+    height: 20px;
+    position: absolute;
+    left: 350px;
+    top:15px;
+}
+.yinliang{
+    width:60px;
+    height:10px;
+    margin-top: 3px;
+    background: #c2ccd1;
+    position: relative;
+    border-radius: 5px;
+    /*float: left;*/
+}
+.yinliangTiao{
+    width: 60px;
+    height:100%;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top:0;
+    background: green;
+    z-index: 99;
+}
+.list{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 220px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 28px !important;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+.listbox{
+    position: relative;
+}
+.lsitKuoZhan{
+    width:60px;
+    height: 200px;
+    position: absolute;
+    left: -15px;
+    bottom:50px;
+    background: red;
+    transition: all .5s;
+    opacity: 0;
+}
+.listActive{
+    opacity: 1;
+}
+.musicStart{
+    width: 100px;
+    height:20px;
+    position: absolute;
+    left: 600px;
+    top:20px;
+}
+.musicEnd{
+    width: 100px;
+    height:20px;
+    position: absolute;
+    left: 650px;
+    top:20px;
+}
+.yinliang2{
+    display: none;
+}
+.gedan{
+    width: 100px;
+    background: wheat;
+    height:100px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.gedan>p{
+    margin: 2px 0;
+    cursor: pointer;
+}
+.red{
+    color: red;
+}

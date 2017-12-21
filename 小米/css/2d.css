@@ -1,0 +1,84 @@
+
+.biankuang{
+	width: 200px;
+	height: 200px;
+	/* background: red; */
+	margin: 0 auto;
+	position: relative;
+}
+.yuan1{
+	width: 200px;
+	height: 200px;
+	/* background-color: rgba(25, 255, 0,0.6); */
+	border-radius: 50%;
+}
+.yuan1 img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.zhezhao1{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background: #000;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	opacity: 0;
+}
+.zborder{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	/* background: #000; */
+	position: absolute;
+	left: -10px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border: 10px solid #ff3300;
+	border-top-color:  #33ff00;
+	border-left-color:  #33ff00;
+	transition: all 1s ease;
+
+}
+.biankuang:hover .zhezhao1{
+	opacity: 0.6;
+}
+.biankuang:hover .zborder{
+	transform: rotate(360deg);
+}
+.xiaomi{
+	width: 234px;
+	height: 300px;
+	background: pink;
+	margin: auto;
+	position: relative;
+	overflow: hidden;
+	transition: all 0.5s ease-in-out; 
+}
+.xmzz{
+	width: 234px;
+	height: 80px;
+	background: #FF6A05;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -80px;
+	margin: auto;
+	opacity: 0;
+	transition: all 0.5s ease-in-out;
+}
+.xiaomi:hover .xmzz{
+	opacity: 0.6;
+	bottom: 0;
+}
+.xiaomi:hover{
+	transform: translateY(-10px);
+	box-shadow: 2px 4px 30px 4px #666; /* 投影 */
+}

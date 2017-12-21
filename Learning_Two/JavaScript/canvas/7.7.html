@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    canvas{
+        border: 1px solid red;
+    }
+</style>
+<body>
+<canvas width="500" height="500"></canvas>
+<button>呀屎啦你</button>
+</body>
+<script>
+    window.onload=function () {
+        let canvas=document.querySelector("canvas");//获取canvas
+        let paint=canvas.getContext("2d");//获取它2d画布
+        let imgData=paint.getImageData(0,0,canvas.width,canvas.height);//获取他的图像数据
+        let arr=[];//创建一个空数组,保存画的东西
+        canvas.onmousedown=function (e) {//鼠标按下
+            let x=e.offsetX;//获取他的起始点
+            let y=e.offsetY;
+            canvas.onmousemove=function (e) {
+                let xx=e.offsetX;//获取它的结束位置
+                let yy=e.offsetY;
+                let $x=xx-x;
+                let $y=yy-y;
+				paint.clearRect(0,0,canvas.width,canvas.height);//清除
+				paint.putImageData(imgData, 0, 0);//
+
+				paint.fillStyle = "red"//
+
+				paint.fillRect(x, y, $x, $y);
+			}
+			canvas.onmouseup=function (e) {
+                canvas.onmousemove=null;
+				arr.push(imgData)
+
+				imgData = paint.getImageData(0, 0, canvas.width, canvas.height)
+
+			}
+
+			let dele=document.querySelector('button')
+
+			dele.onclick=function () {
+
+				if (arr.length<1){
+
+					alert("呀屎啦你,好好听课")
+
+					return
+
+				}
+
+				paint.clearRect(0, 0, canvas.width, canvas.height)
+
+				paint.putImageData(arr[arr.length-1],0,0)
+
+				imgData=arr[arr.length-1]
+
+				arr.pop()
+
+			}
+		}
+
+
+
+
+
+
+	}
+</script>
+</html>

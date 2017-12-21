@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="css/gaoxin.css">
+        <link rel="stylesheet" href="css/bace.css">
+        <link rel="stylesheet" href="iconfont/iconfont.css">
+        <script src="js/rem.js"></script>
+	 <link rel="stylesheet" href="css/swiper.min.css">
+	 <script src="js/jquery.min.js"></script>
+	 <script src="js/swiper.jquery.min.js"></script>
+ </head>
+ <body>
+		<header>
+			
+			<div>
+				<p class="logo"></p>
+				<p class="logo2">优逸客UI实训基地</p>
+			</div>
+			<div class="iconfont icon">&#xe602;</div>
+		</header>
+		<section>
+			<!-- banner开始 -->
+			<div class="banner swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide"><img src="img/20170426044241691.jpg" alt=""></li>
+					<li class="swiper-slide"><img src="img/20170707085723986.jpg" alt=""></li>
+					<li class="swiper-slide"><img src="img/33.jpg" alt=""></li>
+					<li class="swiper-slide"><img src="img/20170614042108158.jpg" alt=""></li>
+				</ul>
+				<div class="swiper-pagination"></div>     <!-- 轮播点-->
+			</div>
+			<!-- banner结束 -->
+
+			<div class="div">
+				<!-- 导航开始 -->
+				<nav class="nav iconfont" id="navziti">
+					首页&#xe6ac;高薪学员
+				</nav>	
+				<!-- 导航结束 -->
+				<!-- 内容开始 -->
+				<ul>
+					<li>
+						<div class="zhaopian">
+							<img src="img/20170112064505763.png" alt="">
+						</div>
+						<div class="youbian">
+							<div class="mingzi">
+								<span class="mingzi1">
+									贾雯雯
+								</span>
+								<span class="bumen">
+									UI设计师
+								</span>
+							</div>
+							<div class="xiabian">
+								9000+五险一金+双休+其他福利
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="zhaopian">
+							<img src="img/20170112064505763.png" alt="">
+						</div>
+						<div class="youbian">
+							<div class="mingzi">
+								<span class="mingzi1">
+									贾雯雯
+								</span>
+								<span class="bumen">
+									UI设计师
+								</span>
+							</div>
+							<div class="xiabian">
+								9000+五险一金+双休+其他福利
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="zhaopian">
+							<img src="img/20170112064505763.png" alt="">
+						</div>
+						<div class="youbian">
+							<div class="mingzi">
+								<span class="mingzi1">
+									贾雯雯
+								</span>
+								<span class="bumen">
+									UI设计师
+								</span>
+							</div>
+							<div class="xiabian">
+								9000+五险一金+双休+其他福利
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="zhaopian">
+							<img src="img/20170112064505763.png" alt="">
+						</div>
+						<div class="youbian">
+							<div class="mingzi">
+								<span class="mingzi1">
+									贾雯雯
+								</span>
+								<span class="bumen">
+									UI设计师
+								</span>
+							</div>
+							<div class="xiabian">
+								9000+五险一金+双休+其他福利
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="zhaopian">
+							<img src="img/20170112064505763.png" alt="">
+						</div>
+						<div class="youbian">
+							<div class="mingzi">
+								<span class="mingzi1">
+									贾雯雯
+								</span>
+								<span class="bumen">
+									UI设计师
+								</span>
+							</div>
+							<div class="xiabian">
+								9000+五险一金+双休+其他福利
+							</div>
+						</div>
+					</li>
+				</ul>
+				<!-- 内容结束 -->
+
+			</div>
+				<!-- 按钮开始 -->
+				<div class="anniu">
+					<ul>
+						<li class="iconfont" id="yuan">
+							&#xe6bc;
+						</li>
+						<li class="iconfont" id="shangyiye">
+							&#xe606;上一页
+						</li>
+						<li class="iconfont" id="diyiye">
+							第一页
+						</li>
+						<li class="iconfont" id="shangyiye">
+							&#xe6ac;下一页
+						</li>
+						<li class="iconfont" id="yuan">
+							&#xe6b8;
+						</li>
+					</ul>
+				</div>
+				
+				<!-- 按钮结束 -->
+			<div class="dibu">
+				<p>
+					Copyright © 2013-2017 版权所有 优逸客科技有限公司
+				</p>
+				<p>
+					联系电话：400-969-7660 晋ICP备13006051号
+				</p>
+			</div>
+		</section>
+
+		<footer>
+			<div class="div-zuo">
+				<span class="div-ti"></span>
+				<span class="div-zi">申请试听</span>
+			</div>
+			<div class="div-zhong">
+				<span class="zhongdiv-ti"></span>
+				<span class="zhongdiv-zi">免费拨打</span>
+			</div>
+			<div class="div-zuo">
+				<span class="div-ti"></span>
+				<span class="div-zi">在线沟通</span>
+			</div>
+		</footer>
+ </body>
+ <script>
+	 $(function () {
+		 var swipera = new Swiper('.swiper-container',{
+			 pagination: '.swiper-pagination',
+			 nextButton: '.swiper-button-next',
+			 prevButton: '.swiper-button-prev',
+			 paginationClickable: true,
+			 spaceBetween: 30,
+			 centeredSlides: true,
+			 autoplay: 2500,
+			 autoplayDisableOnInteraction: false,
+			 loop:true,
+			 paginationType: 'progress'
+		 });
+	 })
+ </script>
+</html>

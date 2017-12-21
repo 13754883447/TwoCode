@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+</head>
+<body>
+<h1>哈哈哈</h1>
+<div id="s1">1</div>
+<div class="s2">2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<section>
+    <p>1</p>
+    <div>2</div>
+</section>
+<input type="text">
+<input type="text" checked="checked">
+<input type="text">
+
+<div id="run" style="width: 100px; height: 100px; background:red"> </div>
+</body>
+<script>
+    $(function () {//callback
+//        let div=$("div");//获取selector选择器
+//    	console.log(div);
+//        $("<div>插入</div>").appendTo("body");//创建一个插入到哪
+//
+//        $("div").click(function(i){//对于每个匹配的元素所要执行的函数
+//        	console.log($(this).index());
+//        })
+//
+//
+//        console.log($("div").size());//输出div长度
+//        console.log($("div").length);//输出div长度
+//
+//        console.log($("div").get(0));//取得第 index 个位置上的元素
+//
+//        console.log($("section>p").index($("p")));//-1要相反  还是-1就是没有
+//        console.log($("p").index($("section>p")));
+
+
+//       let sl=$("#s1");
+//       console.log(s1);
+
+//       console.log($("div"));
+
+//        console.log($(".s2"));
+
+//        console.log($("*"));
+
+
+//        console.log($("div,p"));
+
+//        console.log($("section p"));
+
+//        console.log($("section>p"));
+
+//        console.log($("div+section"));
+//            console.log($("div~section"));
+
+//        console.log($("div:first"));
+
+
+//		console.log($("div:even"));
+//		console.log($("div:odd"));
+
+//       console.log($("div:eq(1)"));
+//        console.log($("div:gt(1)"));
+//		console.log($("div:lt(1)"));
+
+//        console.log($("div:last"));
+//        console.log($(":header"));
+
+		$("#run").click(function(){
+			$("div:not(:animated)").animate({ width:400}, 1000);
+		});
+
+
+
+
+
+
+
+	})
+</script>
+</html>

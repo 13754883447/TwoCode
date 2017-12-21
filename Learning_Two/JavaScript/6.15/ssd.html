@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+123416546546
+
+<button class="toword">上一个</button>
+<button class="back">下一个</button>
+<button class="go">刷新</button>
+</body>
+<script>
+
+    //             let btn=document.querySelector("button");
+    //             btn.onclick=function () {
+    //                 window.close();
+    //             }
+    //        window.location.href="http://baidu.com";
+    //        console.log(window);
+    //    console.log(window.location.href);
+    //    console.log(history);
+
+    let  toword=document.querySelector(".toword");
+    toword.onclick=function () {
+        history.forward();
+    }
+    let  back=document.querySelector(".back");
+    back.onclick=function () {
+        history.back();
+    }
+    let  go=document.querySelector(".go");
+    go.onclick=function () {
+        history.go(0);
+    }
+
+</script>
+</html>

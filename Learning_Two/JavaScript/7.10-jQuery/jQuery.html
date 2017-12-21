@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+</body>
+<script>
+    function MyjQuery(selector,context) {//jQuery函数
+        let arr;//声明一个变量
+        if(context){//获取选择器,如果context有值，那就从context里获取选择器
+        	arr=context.querySelectorAll(selector);
+        }else{//没有就从页面获取选择器
+			arr=document.querySelectorAll(selector);
+        }
+        this.length=arr.length;//this指向selsctor
+        for(let i=0;i<arr.length;i++){
+        	this[i]=arr[i];
+        }
+	};
+	MyjQuery.prototype={//原型对象
+		each:function (callback) {
+			for(let i=0;i<this.length;i++){
+				callback.call(this[i],this[i],i);//将回调函数指向jQuery对象
+			}
+		},
+        html:function (val) {
+          this.each(function (value,index) {
+              if(val){
+              	value.innerHTML=val;
+			  }else{
+              	return this[0].innerHTML;//没有值得话返回第一个jQuery对象的值
+              }
+		  })
+            return this;//返回的是jQuery对象
+		},
+		text:function (val) {
+			this.each(function (value,index) {
+				if(val){
+					value.innerText=val;
+				}else{
+					return this[index].innerText;
+				}
+			})
+		},
+        click:function (callback) {
+            this.each(function (value,index) {
+                value.addEventListener("click",callback,false);
+			})
+            return this;
+		},
+        css:function (dom) {
+            this.each(function (value,index) {
+                for(let i in dom){// //遍历对象，i值的是键,domobj[i]指的是值
+                    this.style[i]=dom[i];
+                }
+			})
+            return this;//this指的jQuery对象
+		}
+    };
+	let div=new MyjQuery("div");
+	div.each(function (value,index) {
+		console.log(1);
+	})
+    div.html("内容");
+	div.text("新的内容");
+	div.click(function () {
+        document.write("测试");
+	});
+	div.css({
+        background:"red"
+    });
+</script>
+</html>

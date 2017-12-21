@@ -1,0 +1,85 @@
+body{
+    background-color: #F2F2F2;
+}
+.banner{
+    width:100%;
+    height:400px;
+    background-image: url('../img/2de797545de56274f03a5920eb3a1.jpg');
+    background-position: 100% 100%;
+    background-size: cover;
+    position: relative;
+}
+.banner-zi{
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 150px;
+}
+.banner-zi1{
+    font-size: 32px;
+    color: white;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 70px;
+}
+.banner-yuanjiao{
+    width:78px;
+    height:68px;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right:0;
+    bottom: -30px;
+    margin: auto;
+}
+.neirongkuang{
+    width:100%;
+    margin-top: 90px;
+}
+.ul{
+    width:100%;
+    padding: 0 50px;
+}
+.li {
+    float: left;
+    width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+.li-kuang{
+    width:100%;
+    padding-top: 60%;
+    position: relative;
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.li-kuang-tu{
+    width:100%;
+    height:100%;
+    padding:15px 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.li-kuang-zi{
+    width:100%;
+    height:26px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    font-size: 24px;
+    line-height: 26px;
+    text-align: center;
+    color: #ccc;
+    background-color: white;
+}

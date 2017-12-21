@@ -1,0 +1,54 @@
+.q1{
+	width: 1080px;
+	height: 168px;
+	background: #00a5c4;
+}
+.q2{
+	font-size: 50px;
+	color: #fafafa;
+	line-height: 168px;
+	margin-left: 50px;
+	float: left;
+}
+.q3{
+	width: 13px;
+	height: 53px;
+	background:red ;
+	float: right;
+	margin-top: 57px;
+	margin-right:66px; 
+}
+.q4{
+	width: 1080px;
+	height: 568px;
+	background:#f0f0f0 ;
+}
+.q5{
+	width: 4px;
+	height: 165px;
+	background: #00a5c4;
+	float: right;
+	margin-right: 33px;
+	margin-top:18px; 
+}
+.q6{
+	width: 1080px;
+	height: 102px;
+	background: #dfe3e4;
+
+	text-align: center;
+	line-height:102px; 
+    color: #505a5d;
+    font-weight: bold;
+}
+.q7{
+	width: 1080px;
+	height: 1089px;
+	background: #dfe3e4;
+}
+.biaoge1{
+	width:214px; 
+	background:#f2f4f4;
+	margin-bottom: 6px;
+	float: left;
+}

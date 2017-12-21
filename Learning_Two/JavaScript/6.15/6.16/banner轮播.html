@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    .box{
+        width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .boxul{
+        width:1200px;
+        height:535px;
+    }
+    .boxul li{
+        width: 100%;
+        height:100%;
+        opacity: 0;
+        position: absolute;
+        left:0;
+        top:0;
+        transition: opacity 1s;
+    }
+    .boxul li.block{
+        opacity: 1;
+    }
+    .lunbo{
+        width:100px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 5px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .lunbo li{
+        width:20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: deepskyblue;
+    }
+    .lunbo li.xuanzhong{
+        background: white;
+    }
+    .left{
+        width: 40px;
+        height: 40px;
+        font-size: 42px;
+        line-height: 38px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom:0;
+        margin: auto;
+        color: #b5b5b5;
+        cursor: pointer;
+        background-color: #000;
+        opacity: 0;
+        transition: opacity .5s;
+
+    }
+    .left:hover,.right:hover{
+        opacity: 1;
+    }
+    .right{
+        width: 40px;
+        height: 40px;
+        font-size: 42px;
+        line-height: 38px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom:0;
+        margin: auto;
+        color: #b5b5b5;
+        text-align: center;
+        cursor: pointer;
+        color: #b5b5b5;
+        cursor: pointer;
+        background-color: #000;
+        opacity: 0;
+        transition: opacity .5s;
+    }
+</style>
+<body>
+<div class="box">
+    <ul class="boxul">
+        <li class="block"><img src="618hdsj.jpg" alt=""></li>
+        <li><img src="sj.jpg" alt=""></li>
+        <li><img src="sjxbx.jpg" alt=""></li>
+        <li><img src="srm.jpg" alt=""></li>
+    </ul>
+    <ul class="lunbo">
+        <li class="xuanzhong"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="right">&gt;</div>
+    <div class="left">&lt;</div>
+</div>
+</body>
+<script>
+    window.onload=function () {
+    	//获取
+        let box=document.querySelector(".box");
+        let boxulli=document.querySelectorAll(".boxul>li");
+        let lunboli=document.querySelectorAll(".lunbo>li");
+        let left=document.querySelector(".left");
+        let right=document.querySelector(".right");
+        let flag=true;
+        //声明
+        index=0;
+        let t=window.setInterval(move,2000);//运行时间函数
+
+        //时间函数的模块
+        function move() {
+        	if(flag){
+        		flag=false;//开关
+        		index++;
+				if(index==boxulli.length){
+					index=0;
+				}
+				boxulli.forEach(function (value,xiabiao) {
+					value.classList.remove("block");
+					lunboli[xiabiao].classList.remove("xuanzhong");
+				})
+				boxulli[index].classList.add("block");
+				lunboli[index].classList.add("xuanzhong");
+			}
+			boxulli.forEach(function (value) {
+                value.addEventListener("transitionend",function () {
+                    flag=true;
+				})
+			})
+            }
+
+		box.onmouseover=function () {
+            clearInterval(t);
+		}
+        box.onmouseout=function () {
+			 t=window.setInterval(move,1500);
+		}
+//函数调用不要加(); 运行才加();
+		right.onclick=function () {
+            move();
+		}
+        left.onclick=function () {
+        	if (flag){
+        		flag=false;
+				index--;
+				if(index<0){
+					index=boxulli.length-1;
+				}
+				boxulli.forEach(function (value,xiabiao) {
+					value.classList.remove("block");
+					lunboli[xiabiao].classList.remove("xuanzhong");
+				})
+				boxulli[index].classList.add("block");
+				lunboli[index].classList.add("xuanzhong");
+			}
+			boxulli.forEach(function (value) {
+                value.addEventListener("transitionend",function () {
+                    flag=true;
+				})
+			})
+            }
+			
+
+		lunboli.forEach(function (arr,brr) {
+			arr.onclick=function () {
+				lunboli.forEach(function (a,b) {
+					a.classList.remove("xuanzhong");
+					boxulli[b].classList.remove("block");
+				});
+				this.classList.add("xuanzhong");
+				boxulli[brr].classList.add("block");
+                index=brr;
+			}
+		})
+
+//            boxulli.forEach(function (value) {
+//                value.addEventListener("transitionend",function () {
+//                    flag=true;
+//				})
+//			})
+
+
+
+
+	}
+
+</script>
+</html>

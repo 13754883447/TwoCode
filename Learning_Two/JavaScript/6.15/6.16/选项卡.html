@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width:1000px;
+        border: 1px solid #ccc;
+        margin: 0 auto;
+        height:550px;
+        margin-top: 20px;
+    }
+    .biaoti{
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+        height:50px;
+    }
+    .biaoti li{
+        width:25%;
+        height:100%;
+        text-align: center;
+        cursor: pointer;
+        line-height: 50px;
+        border:1px solid #ccc ;
+        border-left:0 ;
+        border-top:0 ;
+    }
+    .biaoti li:nth-child(4){
+        border-right: 0;
+    }
+    li.biaoti-xuazhong{
+        background: red;
+        color: #fff;
+    }
+    .tu{
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+        height:550px;
+    }
+    .tu li{
+        width:100%;
+        height:100%;
+        display: none;
+    }
+    .tu li img{
+        width:100%;
+        height:100%;
+    }
+    li.tu-xuanzhong{
+        width:100%;
+        height:100%;
+        display: block;
+    }
+</style>
+<body>
+<div class="box">
+    <ul class="biaoti">
+        <li class="biaoti-xuazhong">穹</li>
+        <li>QQ</li>
+        <li>狗</li>
+        <li>鸟</li>
+    </ul>
+    <ul class="tu">
+        <li class="tu-xuanzhong"><img src="63287417_p0.jpg" alt=""></li>
+        <li><img src="304562.jpg" alt=""></li>
+        <li><img src="304170.jpg" alt=""></li>
+        <li><img src="302205.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+<script>
+    window.onload=function () {
+        let biaoti=document.querySelectorAll(".biaoti>li");
+        console.log(biaoti);
+		let tu=document.querySelectorAll(".tu>li");
+        biaoti.forEach(function (value,index) {
+            value.onclick=function () {
+            	biaoti.forEach(function (a,b) {
+                    a.classList.remove("biaoti-xuazhong");
+                    tu[b].classList.remove("tu-xuanzhong");
+				});
+                this.classList.add("biaoti-xuazhong");
+                tu[index].classList.add("tu-xuanzhong");
+			}
+		})
+
+	}
+</script>
+</html>

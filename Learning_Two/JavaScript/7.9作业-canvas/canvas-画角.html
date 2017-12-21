@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    canvas{
+        border: 1px dashed #ccc;
+    }
+    *{
+        box-sizing: border-box;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .all{
+        width: 200px;
+        height:100%;
+        background-image: url("5bafa40f4bfbfbed19da3ae470f0f736aec31fad.jpg");
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+    .yangshi>div{
+        width: 100%;
+        /*height:20px;*/
+        font-size: 16px;
+        background: rgba(0,0,0,0.2);
+        color: white;
+        text-align: center;
+        cursor: pointer;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 15px;
+    }
+    .yangshi>div:hover{
+        background: red;
+    }
+    .yangshi>.h1{
+        /*height:40px;*/
+        line-height: 40px;
+        font-size: 20px;
+        border-bottom: 1px solid #fff;
+        border-top: 1px solid #fff;
+        padding-bottom: 10px;
+        color: red;
+        pointer-events: none;
+    }
+    .fanhui{
+        width: 100%;
+        height:40px;
+        background: rgba(173,1,25,0.3);
+        color: white;
+    }
+    .xuanzhong{
+        background: lightskyblue;
+    }
+</style>
+<body>
+<canvas width="1155" height="655"></canvas>
+<div class="all">
+    <div class="yangshi s1">
+        <div class="h1">样式</div>
+        <div class="juxing">矩形</div>
+        <div class="line">线条</div>
+        <div class="yuan">圆</div>
+        <div class="poly">多边形</div>
+        <div class="text">文本</div>
+    </div>
+    <div class="yangshi s2">
+        <div class="h1">风格</div>
+        <div class="fill">填充</div>
+        <div class="stroke">空心</div>
+    </div>
+    <div class="yangshi s3">
+        <div class="h1">颜色</div>
+        <div class="color">单色</div>
+        <div class="linear">线性渐变</div>
+        <div class="jiangxiang">镜像渐变</div>
+    </div>
+    <button class="fanhui">返回上一步</button>
+</div>
+</body>
+<script>
+window.onload=function(){
+	let canvas=document.querySelector("canvas");//获取
+	let paint=canvas.getContext("2d");//2d画布环境
+    let type="";//类型
+    let arr=[];//创建一个空数组
+    let imgData=paint.getImageData(0,0,canvas.width,canvas.height);//画布按下时间
+
+    canvas.onmousedown=function (e) {
+        let x=e.offsetX;//按下位置
+        let y=e.offsetY;
+        canvas.onmouseover=function (e) {
+			let newx=e.offsetX;//滑动
+			let newy=e.offsetY;
+        	if(type=="fanhui"){
+				obj.delete(x,y,newx,newy);
+            }else {
+				paint.clearRect(0, 0, canvas.width, canvas.height);
+				if (arr.length > 0) {
+					paint.putImageData(arr[arr.length - 1], 0, 0);
+				}
+            }
+
+
+
+		}
+
+
+
+
+	}
+
+
+
+
+}
+</script>
+</html>

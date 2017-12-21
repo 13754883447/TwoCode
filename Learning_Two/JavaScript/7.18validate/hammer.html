@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="rem.js"></script>
+    <script src="../hanmmer.js"></script>
+</head>
+<style>
+    div{
+        width: 500px;
+        height: 500px;
+        background: red;
+    }
+</style>
+<body>
+<div>
+
+</div>
+</body>
+<script>
+    let div=document.querySelector("div")
+//    div.addEventListener("touchstart",function () {
+//        this.innerHTML+="开始";
+//	})
+//	div.addEventListener("touchmove",function () {
+//		this.innerHTML+="滑动";
+//	})
+//	div.addEventListener("touchend",function () {
+//		this.innerHTML+="结束";
+//	})
+div.addEventListener('touchstart',function (e) {
+	this.innerHTML=`
+           touches:${e.touches}<br>,
+          target:${e.targetTouches},
+          change:${e.changedTouches}
+        `
+})
+</script>
+</html>

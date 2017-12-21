@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../6.28/$.js"></script>
+</head>
+<style>
+    .box{
+        width:500px;
+        height:200px;
+        border: 1px solid #ccc;
+        margin: 0 auto;
+        padding: 50px 0;
+    }
+    .zhanghao,.mima{
+        width:100%;
+        height:50px;
+        text-align: center;
+    }
+    .zhanghaoinput,.mimainput{
+        width:300px;
+        height:20px;
+    }
+    .denglu{
+        width:100%;
+        height:40px;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="zhanghao">
+        账号:<input type="text" name="zhanghao" class="zhanghaoinput">
+    </div>
+    <div class="mima">
+        密码:<input type="password" name="mima" class="mimainput">
+    </div>
+    <div class="denglu">
+        <span>7天之内免登陆</span>
+        <input type="checkbox">
+        <button>登录</button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        let zhanghao=$(".zhanghaoinput");
+        let password=$(".mimainput");
+        let button=$("button");
+        let checd=$("input[type=checkbox]");
+        if(getCookie("load")==="yes"){
+			location.href="https://www.bilibili.com/";
+        }
+        button.onclick=function () {
+			if(zhanghao.value=="admin"&&password.value=="123"){
+				if(checd.checked){
+					setCookie("load","yes",100);
+				}
+				location.href="https://www.bilibili.com/";
+			}else{
+				alert("账号密码错误");
+			}
+		}
+
+	})
+</script>

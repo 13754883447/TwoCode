@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    button{
+        position: fixed;
+        left: 80px;
+        top: 0;
+    }
+</style>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<button>点击</button>
+</body>
+</html>
+<script>
+    //事件委派:指本来属于子元素身上的事件,添加到父元素身上代为执行.
+    let ul=document.querySelector("ul");
+    let button=document.querySelector("button")
+    button.onclick=function () {
+        let li=document.createElement("li");//createElement() 方法通过指定名称创建一个元素
+        li.innerHTML="new";//创建的元素在html中显示
+        ul.appendChild(li);//往ul后面追加一个子元素
+	}
+    ul.onclick=function (e) {
+        let ev=e.traget||e.srcElement;
+        if(ev.nodeName=="LI"){
+        	console.log(1);
+        }
+	}
+</script>

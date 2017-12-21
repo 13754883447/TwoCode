@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .box{
+        width:100px;
+        height:100px;
+        background-color: #43ffe9;
+        position: absolute;
+        text-align: center;
+        line-height: 100px;
+    }
+</style>
+<body>
+<div class="box">
+吔屎啦你
+</div>
+</body>
+<script>
+	function $(selector,flag=false) {
+		if(typeof selector=="string"){
+			if(flag){
+				return document.querySelectorAll(selector);
+			}else{
+				return document.querySelector(selector);
+			}
+		}else if(typeof selector=="function"){
+
+			window.onload=function () {
+				selector();
+			}
+		}
+	}
+	$(function () {
+        let box=$(".box"); //获取盒子
+
+        index=10;
+        indexl=10;
+        let t=setInterval(move,100)
+
+        function move() {
+			let lw=document.documentElement.clientWidth; //获取浏览器宽高
+			let lh=document.documentElement.clientHeight;
+			//获取盒子宽高
+			let left=box.offsetWidth;
+			let height=box.offsetHeight;
+
+			let ol=box.offsetLeft;
+			let ot=box.offsetTop;
+
+			let maxwidth=(lw-left) ;
+			let maxheight=(lh-height);
+			if(ot>=maxheight){
+				ot=maxheight;
+				indexl*=-1;
+				box.style.borderRadius=Math.ceil(Math.random()*50)+"%";
+				box.style.background=`rgba(${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)})`;
+			}
+			if(ot<0){
+				ot=0;
+				indexl*=-1;
+				box.style.borderRadius=Math.ceil(Math.random()*50)+"%";
+				box.style.background=`rgba(${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)})`;
+			}
+			if(ol>=maxwidth){
+				ol=maxwidth;
+				index*=-1;
+				box.style.borderRadius=Math.ceil(Math.random()*50)+"%";
+				box.style.background=`rgba(${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)})`;
+			}
+			if(ol<0){
+				ol=0;
+				index*=-1;
+				box.style.borderRadius=Math.ceil(Math.random()*50)+"%";
+				box.style.background=`rgba(${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)})`;
+			}
+			box.style.left=ol+index+"px";
+			box.style.top=ot+indexl+"px";
+		}
+
+
+	})
+</script>
+</html>

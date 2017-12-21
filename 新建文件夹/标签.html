@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签</title>
+</head>
+<body>
+	 一、字体效果标签 行元素
+	粗体：<b>b标签</b>    <br>
+	强调  <strong>标签</strong>    <br>
+
+	斜体：<i>标签</i>   <br>
+	强调：<em>标签</em>  <br>
+
+	删除线：<s>标签</s>   <br>
+
+	下划线：<u>标签</u>    <br>
+
+	<hr>
+	 二、标题标签  块元素
+	<h1>标题1</h1>
+	<h2>标题2</h2>
+	<h6>标题6</h6>
+
+	<hr>
+	三、区段标签
+	<p>段落段落段落段落段落
+	段落段落段落段落段落段落段落段落段落段落段落</p>
+	<p>段落段落段落段落段落     段落段落段落段落段落段落段落段落段落段落段落</p>
+	<pre>段落段落段落段       落段落段落段落段落段落段
+	落段落段落段落段落段落段落</pre>
+
+注：pre标签可以识别多个空格
+	p标签只可以识别一个空格
+	<hr>
+	四、列表标签
+	1、无序列表(disc、circle、square)
+	<ul type="circle">
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+	</ul>
+
+	2、有序列表(1、a、A、i、I)
+	<ol type="i">
+		<li>222</li>
+		<li>222</li>
+		<li>222</li>
+		<li>222</li>
+		<li>222</li>
+	</ol>
+
+
+
+	<hr>
+	五、自定义列表
+	<dl>
+		<dt>第一章</dt>
+		<dd>第一节</dd>
+		<dd>第二节</dd>
+		<dt>第二章</dt>
+		<dd>第一节</dd>
+		<dd>第二节</dd>
+	</dl>
+	
+	<hr>
+	六、form表单元素
+	input控件
+	1、单行文本
+	<input type="text" placeholder="提示">   <br>
+
+	2、密码
+	<input type="password"> <br>
+
+	3、提交按钮
+	<input type="submit" value="登录">  <br>
+
+	4、重置按钮
+	<input type="reset">   <br>
+
+	5、单选按钮 
+	<input type="radio" name="" checked>  <br>
+
+	6、多选框 
+	<input type="checkbox" checked>   <br>
+
+	7、文件
+	<input type="file">   <br>
+
+	8、文本域
+	<textarea name="" id="" cols="30" rows="10"></textarea>    <br>
+
+	9、自定义按钮
+	<input type="button">   <br>
+
+	10、日期
+	date：<input type="date">  <br>
+	month:<input type="month">  <br>
+	week:<input type="week">  <br>
+	time:<input type="time">  <br>
+	datetime-local:<input type="datetime-local">  <br>
+
+	11、范围
+	number:<input type="number" max="10" min="1" step="2">	   <br>		
+	range:<input type="range">  <br>
+
+	12、正则验证
+	email：<input type="email">   <br>
+	url：<input type="url">  <br>
+	tel：<input type="tel">    <br>
+
+	13、颜色
+	<input type="color">  <br>
+
+	<hr>
+	七、H5语义化标签
+	<header>头部标签</header><!-- (不可以嵌套) -->
+	<nav>导航标签</nav>
+	<section>定义文档某个区域</section>
+	<article>定义独立内容</article>
+	<aside>文章侧栏，与内容有关</aside>
+	<main>主要部分</main>
+	<footer>底部</footer>
+
+	<hgroup>(对标题标签进行分组)
+		<h1></h1>
+		<h2></h2>
+	</hgroup>
+
+	<figure>(图片、图像等的独立内容)
+		<figcaption>标题</figcaption>
+		<pre></pre>
+		<time datetime="2017-2-14">情人节</time>
+		<code>代码</code>
+	</figure>
+
+	<hr>
+	八、table标签
+	<table border="1px" cellspacing="0px" cellpadding="10px">
+	<!-- cellspacing：调整表格与表格之间的距离 -->
+	<!-- cellpadding: 调整表格与内容之间的距离 -->
+			<caption>WUIW1612班级花名册</caption>
+		<thead>
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>联系方式</th>
+			</tr><!-- 行 -->
+		</thead><!-- 表头 -->
+		<tbody>
+			<tr>
+				<td>001</td>
+				<td>李四</td>
+				<td>123465</td>
+			</tr>
+			<tr>
+				<td>002</td>
+				<td>李四</td>
+				<td>123465</td>
+			</tr>
+		</tbody><!-- 主体内容 -->
+		<tfoot>
+			<tr align="center">
+				<td>合计</td>
+				<td colspan="2">33</td>
+			</tr>
+		</tfoot><!-- 表尾 -->
+	</table>
+
+	<hr>
+
+
+	<table border="1"  cellspacing="0px" cellpadding="10px">
+		<tr>
+			<th colspan="2"></th>
+			<th rowspan="2"></th>
+		</tr>
+		<tr>
+			<th rowspan="2"></th>
+			<th></th>
+		</tr>
+		<tr>
+			<th colspan="2"></th>
+		</tr>
+	</table>
+	
+	九、H5新增标签
+	1、进度条(需要指定范围)
+	<progress value="30" min="0" max="100"></progress>
+
+	2、范围程度
+	<meter value="30" min="0" max="100"></meter>
+
+	3、视频
+	<video src="1.mp4" controls="controls"></video>
+
+	4、音频
+	<audio src="over.wav" controls="controls" loop="loop" autoplay="autoplay"></audio>
+
+	5、
+	<canvas style="width: 500px;height:500px;background: #ccc"></canvas>
+</body>
+</html>

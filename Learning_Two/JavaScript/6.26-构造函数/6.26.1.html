@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .div{
+        width: 400px;
+        height: 400px;
+        background: rebeccapurple;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+</style>
+<body>
+<div class="div">
+
+</div>
+</body>
+</html>
+<script>
+
+//类写法
+let div=document.querySelector(".div");
+class Drag{
+	constructor(dom){
+		this.dom=dom;
+		this.dw=document.documentElement.clientWidth;
+		this.dh=document.documentElement.clientHeight;
+		this.ow=dom.offsetWidth;
+		this.oh=dom.offsetHeight;
+    }
+    down() {
+		let that = this;
+		this.dom.onmousedown = function (e) {
+			that.ol = e.offsetX;
+			that.ot = e.offsetY;
+			that.move();
+			that.up();
+		}
+	}
+    move () {
+		let that=this;
+		document.onmousemove=function (e) {
+//        	距离视口窗口左上角的距离
+					that.cl=e.clientX;
+					that.ct=e.clientY;
+
+					//移动到哪里
+					that.dl=that.cl-that.ol;
+					that.dt=that.ct-that.ot;
+					if (that.dl>=that.dw-that.ow){
+						that.dl=that.dw-that.ow;
+					}
+					if (that.dt>=that.dh-that.oh){
+						that.dt=that.dh-that.oh;
+					}
+					if(that.dl<=0){
+						that.dl=0;
+					}
+					if(that.dt<=0){
+						that.dt=0;
+					}
+					that.dom.style.left=that.dl+"px";
+					that.dom.style.top=that.dt+"px";
+//					that.dom.style.cssText=`left:${that.dl}px;top:${that.dt}px`;
+				}
+	}
+	up () {
+		this.dom.onmouseup=function(){
+            document.onmousemove=null;
+		}
+	}
+}
+let dom=document.querySelector(".div");
+let obj=new Drag(dom);
+obj.down();
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	<!--面向对象的方式写拖拽-->
+
+//第三种
+//分割开
+
+//function Drag(dom) {
+///获取视口窗口的左上角距离
+///让这个dom值与外面的dom是相通的
+//    this.dom=dom;
+//		this.dw=document.documentElement.clientWidth;
+//		this.dh=document.documentElement.clientHeight;
+///获取事件源的左上角距离
+//		this.ow=dom.offsetWidth;
+//		this.oh=dom.offsetHeight;
+//    }
+//Drag.prototype= {
+///原型对象用一个函数来触发
+//	drag: function () {
+//		this.down()
+//	},
+//down按下
+//	down: function () {
+///相通里外
+//		let that = this;
+//		this.dom.onmousedown = function (e) {
+///获取事件源的左上角的位置
+//			that.ol = e.offsetX;
+//			that.ot = e.offsetY;
+///触发down之后会触发其他两个函数
+//			that.move();
+//			that.up();
+//		}
+//	},
+//	move:function(){
+//		let that=this;
+///互通
+//		document.onmousemove=function (e) {
+////        	距离视口窗口左上角的距离
+//					that.cl=e.clientX;
+//					that.ct=e.clientY;
+//
+///					//移动到哪里
+//					that.dl=that.cl-that.ol;
+//					that.dt=that.ct-that.ot;
+///当移动的距离限制条件
+//					if (that.dl>=that.dw-that.ow){
+//						that.dl=that.dw-that.ow;
+//					}
+//					if (that.dt>=that.dh-that.oh){
+//						that.dt=that.dh-that.oh;
+//					}
+//					if(that.dl<=0){
+//						that.dl=0;
+//					}
+//					if(that.dt<=0){
+//						that.dt=0;
+//					}
+///会移动到哪里,div必须要有定位！没有定位无法移动
+//					that.dom.style.left=that.dl+"px";
+//					that.dom.style.top=that.dt+"px";
+////					that.dom.style.cssText=`left:${that.dl}px;top:${that.dt}px`;
+//				}
+//    },
+///鼠标抬起事件
+//	up:function () {
+//		this.dom.onmouseup=function(){
+//            document.onmousemove=null;
+//		}
+//	}
+//}
+///获取div
+//let dom=document.querySelector(".div");
+///new命令的作用，就是执行构造函数，返回一个实例对象。
+//let obj=new Drag(dom);
+///让drag运行。
+//obj.drag();
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//第二种
+//封装写法
+//    function Drag(dom) {
+//    this.dom=dom;
+//		this.dw=document.documentElement.clientWidth;
+//		this.dh=document.documentElement.clientHeight;
+//		this.ow=dom.offsetWidth;
+//		this.oh=dom.offsetHeight;
+//    }
+//    Drag.prototype={
+//        drag:function () {
+//            let that=this;
+//            this.dom.onmousedown=function(e){
+//				that.ol=e.offsetX;
+//				that.ot=e.offsetY;
+//				document.onmousemove=function (e) {
+////        	距离视口窗口左上角的距离
+//					that.cl=e.clientX;
+//					that.ct=e.clientY;
+//
+//					//移动到哪里
+//					that.dl=that.cl-that.ol;
+//					that.dt=that.ct-that.ot;
+//					if (that.dl>=that.dw-that.ow){
+//						that.dl=that.dw-that.ow;
+//					}
+//					if (that.dt>=that.dh-that.oh){
+//						that.dt=that.dh-that.oh;
+//					}
+//					if(that.dl<=0){
+//						that.dl=0;
+//					}
+//					if(that.dt<=0){
+//						that.dt=0;
+//					}
+//					that.dom.style.left=that.dl+"px";
+//					that.dom.style.top=that.dt+"px";
+////					that.dom.style.cssText=`left:${that.dl}px;top:${that.dt}px`;
+//				}
+//				dom.onmouseup=function () {
+//                    document.onmousemove=null;
+//				}
+//            }
+//		}
+//	}
+//
+//	var dom=document.querySelector(".div");
+//    let obj=new Drag(dom);
+//    obj.drag();
+</script>

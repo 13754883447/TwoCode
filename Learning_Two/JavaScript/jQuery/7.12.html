@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+</head>
+<style>
+    div{
+        width: 100px;
+        height:100px;
+        background: #33fabf;
+    }
+</style>
+<body>
+<div></div>
+</body>
+<script>
+    $("div").hover(function () {
+        $(this).slideDown(1000).queue(function () {
+        	$("div").fadeIn(1000);
+			$(this).dequeue();
+			$("div").fadeOut(1000);
+		}).slideUp(1000).slideDown(1000);
+	})
+
+</script>
+</html>
